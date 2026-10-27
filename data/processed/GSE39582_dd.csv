@@ -1,0 +1,8 @@
+cohort,field,source_key,n_nonmissing,pct_missing,unit_note
+GSE39582,os_time,os.delay (months),579,1.03,assumed months (unit not in field name)
+GSE39582,os_event,os.event,579,1.03,
+GSE39582,dfs_time,rfs.delay,577,1.37,assumed months (unit not in field name)
+GSE39582,dfs_event,rfs.event,574,1.88,
+GSE39582,age,age.at.diagnosis (year),584,0.17,years assumed
+GSE39582,stage,tnm.stage,579,1.03,
+GSE39582,mmr,mmr.status,536,8.38,

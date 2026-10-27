@@ -1,0 +1,8 @@
+cohort,field,source_key,n_nonmissing,pct_missing,unit_note
+GSE17536,os_time,overall survival follow-up time,177,0.0,assumed months (unit not in field name)
+GSE17536,os_event,overall_event (death from any cause),177,0.0,
+GSE17536,dfs_time,dfs_time,177,0.0,assumed months (unit not in field name)
+GSE17536,dfs_event,dfs_event (disease free survival; cancer recurrence),145,18.08,
+GSE17536,age,age,177,0.0,years assumed
+GSE17536,stage,ajcc_stage,177,0.0,
+GSE17536,mmr,(not found),0,100.0,

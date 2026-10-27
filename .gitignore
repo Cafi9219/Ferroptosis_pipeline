@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Large raw datasets (raw downloads >100MB exceed GitHub file limit)
+data/raw/
+
+# System / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

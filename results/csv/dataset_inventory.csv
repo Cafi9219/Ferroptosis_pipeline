@@ -1,0 +1,5 @@
+dataset,data_type,platform,n_files,n_samples,n_patients,n_genes,pct_missing_expression,endpoint,events,note,n_probes,value_range,scale_note
+TCGA-COAD,RNA-seq STAR counts -> log2(TPM+1),Illumina RNA-seq (GDC harmonized),524.0,458,458,19938,0.0,OS,95,MSI not available; DFS not fetched,,,
+GSE39582,microarray,GPL570,,585,585,20846,0.0,OS,190,,54675.0,-0.40..16.11,already log-scale (max<=100); no transform
+GSE17536,microarray,GPL570,,177,177,20846,0.0,OS,73,,54675.0,3.47..14.38,already log-scale (max<=100); no transform
+GSE14333,microarray,GPL570,,290,290,20846,0.0,DFS,50,OS unavailable -> DFS/RFS used (endpoint differs from TCGA OS training; exploratory),54675.0,-4.65..13.27,already log-scale (max<=100); no transform

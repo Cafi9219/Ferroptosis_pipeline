@@ -1,0 +1,19 @@
+cohort,endpoint,n_controls,seed,control_set_size,signature,cindex,empirical_p_one_sided,percentile_vs_random,note
+GSE39582,OS,200,42,36,ferroptosis_panel_frozen,0.5389803556006416,0.3383084577114428,66.5,same procedure applied to controls
+GSE39582,OS,200,42,36,random_sets_median,0.5278489862502913,,,screening+ridge identical to panel
+GSE39582,OS,200,42,36,random_sets_95th_percentile,0.5750682002001453,,,
+GSE39582,OS,200,42,36,"proliferation_markers (author-compiled, exploratory)",0.5697835414753177,,,not a published validated signature
+GSE39582,OS,200,42,36,clinical_model_frozen,0.6749902864120781,,,TCGA-frozen age+stage
+GSE39582,OS,200,42,36,combined_model_frozen,0.6831427619893428,,,TCGA-frozen age+stage+risk
+GSE17536,OS,200,42,36,ferroptosis_panel_frozen,0.4864435621100397,0.8308457711442786,17.0,same procedure applied to controls
+GSE17536,OS,200,42,36,random_sets_median,0.5323879750425411,,,screening+ridge identical to panel
+GSE17536,OS,200,42,36,random_sets_95th_percentile,0.5939875212705615,,,
+GSE17536,OS,200,42,36,"proliferation_markers (author-compiled, exploratory)",0.49778786159954624,,,not a published validated signature
+GSE17536,OS,200,42,36,clinical_model_frozen,0.7467385138967668,,,TCGA-frozen age+stage
+GSE17536,OS,200,42,36,combined_model_frozen,0.7247872943845718,,,TCGA-frozen age+stage+risk
+GSE14333,DFS,200,42,36,ferroptosis_panel_frozen,0.5809384164222874,0.34328358208955223,66.5,same procedure applied to controls
+GSE14333,DFS,200,42,36,random_sets_median,0.5549853372434017,,,screening+ridge identical to panel
+GSE14333,DFS,200,42,36,random_sets_95th_percentile,0.6464956011730205,,,
+GSE14333,DFS,200,42,36,"proliferation_markers (author-compiled, exploratory)",0.5087976539589443,,,not a published validated signature
+GSE14333,DFS,200,42,36,clinical_model_frozen,0.6240469208211143,,,TCGA-frozen age+stage
+GSE14333,DFS,200,42,36,combined_model_frozen,0.6416422287390029,,,TCGA-frozen age+stage+risk

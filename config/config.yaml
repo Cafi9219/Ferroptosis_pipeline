@@ -1,0 +1,52 @@
+seed: 42
+tcga_project: TCGA-COAD
+workflow_type: STAR - Counts
+panel_confirmed: false
+p_screen: 0.1
+min_features: 3
+inner_folds: 3
+cv_folds: 5
+cv_repeats: 2
+min_events: 10
+n_boot: 500
+n_random_prognosis: 200
+n_random_classification: 200
+min_panel_coverage: 0.8
+gdsc_lineage_field: TCGA_DESC
+gdsc_lineage_value: COREAD
+gdsc_min_cell_lines: 15
+model_min_cell_lines: 30
+max_model_drugs: 10
+ctrp_site: large_intestine
+expressed_quantile_floor: 0.5
+geo:
+  cohorts:
+  - GSE39582
+  - GSE17536
+  - GSE14333
+  overrides: {}
+proliferation_markers:
+- MKI67
+- PCNA
+- TOP2A
+- MCM2
+- CCNB1
+- CDK1
+- AURKA
+- BIRC5
+- UBE2C
+- CDC20
+- PLK1
+- MYBL2
+- CCNE1
+- BUB1
+- TYMS
+- RRM2
+urls:
+  gdsc2_response:
+  - https://cog.sanger.ac.uk/cancerrxgene/GDSC_release8.5/GDSC2_fitted_dose_response_27Oct23.xlsx
+  gdsc_expression:
+  - https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip
+  - https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp.txt.zip
+  ctrp:
+  - https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip

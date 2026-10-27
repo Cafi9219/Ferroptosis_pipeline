@@ -1,0 +1,84 @@
+{
+ "version": "1.5.0",
+ "panel_version": "03d5812616df",
+ "panel_status": "PROVISIONAL (not confirmed by the user)",
+ "seed": 42,
+ "endpoint": "OS (months)",
+ "features": [
+  "AKR1C1",
+  "ALOX12",
+  "HSPB1"
+ ],
+ "coef": {
+  "AKR1C1": 0.008549239853976971,
+  "ALOX12": 0.015436196748788407,
+  "HSPB1": 0.008526461391889764
+ },
+ "train_mean": {
+  "AKR1C1": 1.0485566820276497,
+  "ALOX12": 1.0969447004608295,
+  "HSPB1": 9.007161751152074
+ },
+ "train_sd": {
+  "AKR1C1": 0.7237624192094798,
+  "ALOX12": 0.4425020056524909,
+  "HSPB1": 0.9723092516721499
+ },
+ "penalizer": 5.0,
+ "risk_median": -0.0028889996417987207,
+ "risk_tertiles": [
+  -0.01062706618153255,
+  0.009212944593502886
+ ],
+ "clinical_params": {
+  "age": 0.04535197022966107,
+  "stage": 0.9820488553866388
+ },
+ "combined_params": {
+  "age": 0.04361925587895405,
+  "stage": 0.9552501933138806,
+  "risk": 13.253095952992314
+ },
+ "eligible_features": [
+  "ACSL3",
+  "ACSL4",
+  "AIFM2",
+  "AKR1C1",
+  "ALOX12",
+  "ALOX15",
+  "ALOX5",
+  "BECN1",
+  "CISD1",
+  "DHODH",
+  "DPP4",
+  "FANCD2",
+  "FTH1",
+  "FTL",
+  "GCH1",
+  "GCLC",
+  "GCLM",
+  "GLS2",
+  "GPX4",
+  "HMOX1",
+  "HSPB1",
+  "LPCAT3",
+  "NCOA4",
+  "NFE2L2",
+  "NOX1",
+  "NQO1",
+  "PEBP1",
+  "POR",
+  "SAT1",
+  "SCD",
+  "SLC3A2",
+  "SLC40A1",
+  "SLC7A11",
+  "TFRC",
+  "TP53",
+  "TXNRD1"
+ ],
+ "n_train": 434,
+ "events_train": 95,
+ "fallback_used": false,
+ "frozen_at": "2026-10-13T17:23:02"
+}

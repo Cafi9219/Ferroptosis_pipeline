@@ -1,0 +1,51 @@
+
+=== signature_comparison.csv ===
+  cohort endpoint                                            signature  cindex  empirical_p_one_sided  n_controls
+GSE39582       OS                             ferroptosis_panel_frozen   0.539                  0.338         200
+GSE39582       OS                                   random_sets_median   0.528                    NaN         200
+GSE39582       OS                          random_sets_95th_percentile   0.575                    NaN         200
+GSE39582       OS proliferation_markers (author-compiled, exploratory)   0.570                    NaN         200
+GSE39582       OS                                clinical_model_frozen   0.675                    NaN         200
+GSE39582       OS                                combined_model_frozen   0.683                    NaN         200
+GSE17536       OS                             ferroptosis_panel_frozen   0.486                  0.831         200
+GSE17536       OS                                   random_sets_median   0.532                    NaN         200
+GSE17536       OS                          random_sets_95th_percentile   0.594                    NaN         200
+GSE17536       OS proliferation_markers (author-compiled, exploratory)   0.498                    NaN         200
+GSE17536       OS                                clinical_model_frozen   0.747                    NaN         200
+GSE17536       OS                                combined_model_frozen   0.725                    NaN         200
+GSE14333      DFS                             ferroptosis_panel_frozen   0.581                  0.343         200
+GSE14333      DFS                                   random_sets_median   0.555                    NaN         200
+GSE14333      DFS                          random_sets_95th_percentile   0.646                    NaN         200
+GSE14333      DFS proliferation_markers (author-compiled, exploratory)   0.509                    NaN         200
+GSE14333      DFS                                clinical_model_frozen   0.624                    NaN         200
+GSE14333      DFS                                combined_model_frozen   0.642                    NaN         200
+
+=== prognosis_validation_metrics.csv ===
+                                     cohort endpoint     model           scheme   n  events  cindex  cindex_lo95  cindex_hi95
+    TCGA-COAD (CV, training-only selection)       OS molecular cross_validation 350      61   0.548        0.482        0.697
+    TCGA-COAD (CV, training-only selection)       OS  clinical cross_validation 350      61   0.770        0.661        0.864
+    TCGA-COAD (CV, training-only selection)       OS  combined cross_validation 350      61   0.774        0.639        0.874
+TCGA-COAD (training, in-sample; optimistic)       OS molecular        in_sample 434      95   0.617        0.549        0.693
+                                   GSE39582       OS molecular  external_frozen 573     190   0.539        0.499        0.580
+                                   GSE39582       OS  clinical  external_frozen 568     189   0.675        0.631        0.717
+                                   GSE39582       OS  combined  external_frozen 568     189   0.683        0.641        0.726
+                                   GSE17536       OS molecular  external_frozen 177      73   0.486        0.415        0.562
+                                   GSE17536       OS  clinical  external_frozen 177      73   0.747        0.688        0.801
+                                   GSE17536       OS  combined  external_frozen 177      73   0.725        0.667        0.782
+                                   GSE14333      DFS molecular  external_frozen 153      29   0.581        0.471        0.701
+                                   GSE14333      DFS  clinical  external_frozen 153      29   0.624        0.507        0.719
+                                   GSE14333      DFS  combined  external_frozen 153      29   0.642        0.525        0.740
+
+=== classification_metrics.csv ===
+  cohort               scheme                                                            model   n   auc  auc_lo95  auc_hi95  empirical_p_vs_random
+GSE39582 oof_cv_patient_level                                             ferroptosis_panel_LR 536 0.958     0.932     0.976                  0.234
+GSE39582 oof_cv_patient_level                                         proliferation_markers_LR 536 0.934     0.899     0.962                    NaN
+GSE39582   unsupervised_score FerroScore_raw (driver-suppressor), orientation not prespecified 536 0.453       NaN       NaN                    NaN
+
+=== DATA SANITY ===
+ok      GSE39582: 573 patients, 190 events (of 585 samples)
+ok      GSE17536: 177 patients, 73 events (of 177 samples)
+ok      GSE14333: 153 patients, 29 events (of 290 samples)
+No sanity problems detected.
+
+Full report: results/reports/results_summary.md   Figures: results/figures/

@@ -1,0 +1,2056 @@
+2026-10-10 19:31:49 | INFO    | Ferroptosis pipeline v1.0.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-10 19:31:49 | INFO    | === STAGE: fetch ===
+2026-10-10 19:31:51 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-10 19:31:52 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-10 19:31:52 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-10 19:35:22 | INFO    | TCGA downloads: 50/458
+2026-10-10 19:38:49 | INFO    | TCGA downloads: 100/458
+2026-10-10 19:42:52 | INFO    | TCGA downloads: 150/458
+2026-10-10 19:46:41 | INFO    | TCGA downloads: 200/458
+2026-10-10 19:49:48 | INFO    | TCGA downloads: 250/458
+2026-10-10 19:53:05 | INFO    | TCGA downloads: 300/458
+2026-10-10 19:56:26 | INFO    | TCGA downloads: 350/458
+2026-10-10 20:03:22 | INFO    | TCGA downloads: 400/458
+2026-10-10 20:07:06 | INFO    | TCGA downloads: 450/458
+2026-10-10 20:07:42 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-10 20:19:40 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp.txt.zip']. Last errors: ['https://cog.sanger.ac.u
+2026-10-10 20:20:06 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-10 20:20:06 | INFO    | === STAGE: preprocess ===
+2026-10-10 20:22:22 | INFO    | TCGA processed: 458 samples, 19938 genes, 389 valid OS
+2026-10-10 20:22:49 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-10 20:24:07 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-10 20:24:13 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-10 20:24:39 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-10 20:24:49 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-10 20:25:28 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=none
+2026-10-10 20:25:28 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-10 20:25:28 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-10 20:26:04 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-10 20:26:04 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (14 rows)
+2026-10-10 20:26:04 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/sample_exclusion_audit.csv (541 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-10 20:26:05 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-10 20:26:06 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-10 20:26:06 | INFO    | === STAGE: prognosis ===
+2026-10-10 20:26:43 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-10 20:26:43 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-10 20:26:48 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-10 20:26:48 | INFO    | saved results/csv/selected_features.csv (4 rows)
+2026-10-10 20:26:48 | INFO    | saved results/csv/prognosis_model_coefficients.csv (9 rows)
+2026-10-10 20:26:48 | INFO    | Frozen model: 4 features, penalizer=5.0 (frozen BEFORE external validation)
+2026-10-10 20:27:33 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-10 20:27:48 | INFO    | saved results/csv/prognosis_validation_metrics.csv (11 rows)
+2026-10-10 20:27:48 | INFO    | saved results/csv/prognosis_patient_scores.csv (1035 rows)
+2026-10-10 20:27:48 | INFO    | === STAGE: benchmark ===
+2026-10-10 20:28:24 | INFO    | Random-control universe: 12071 genes; set size k=36; N=200
+2026-10-10 20:30:32 | INFO    | random controls: 25/200
+2026-10-10 20:32:37 | INFO    | random controls: 50/200
+2026-10-10 20:34:41 | INFO    | random controls: 75/200
+2026-10-10 20:36:46 | INFO    | random controls: 100/200
+2026-10-10 20:38:52 | INFO    | random controls: 125/200
+2026-10-10 20:40:58 | INFO    | random controls: 150/200
+2026-10-10 20:43:06 | INFO    | random controls: 175/200
+2026-10-10 20:45:13 | INFO    | random controls: 200/200
+2026-10-10 20:45:16 | INFO    | saved results/csv/signature_comparison.csv (12 rows)
+2026-10-10 20:45:16 | INFO    | === STAGE: classification ===
+2026-10-10 20:45:52 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-10 20:46:23 | INFO    | classification random controls 25/200
+2026-10-10 20:46:47 | INFO    | classification random controls 50/200
+2026-10-10 20:47:12 | INFO    | classification random controls 75/200
+2026-10-10 20:47:36 | INFO    | classification random controls 100/200
+2026-10-10 20:48:00 | INFO    | classification random controls 125/200
+2026-10-10 20:48:25 | INFO    | classification random controls 150/200
+2026-10-10 20:48:50 | INFO    | classification random controls 175/200
+2026-10-10 20:49:15 | INFO    | classification random controls 200/200
+2026-10-10 20:49:15 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-10 20:49:15 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-10 20:49:15 | INFO    | === STAGE: drug ===
+2026-10-10 20:49:15 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-10 20:49:15 | INFO    | === STAGE: figures ===
+2026-10-10 20:49:19 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-10 20:49:20 | INFO    | figure saved: fig02_missing_data
+2026-10-10 20:50:00 | INFO    | figure saved: fig03_expression_distributions
+2026-10-10 20:50:13 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-10 20:50:15 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-10 20:50:17 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-10 20:50:17 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-10 20:50:18 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-10 20:50:19 | INFO    | figure saved: fig09_roc
+2026-10-10 20:50:20 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-10 20:50:22 | INFO    | figure saved: fig11_random_benchmark
+2026-10-10 20:50:22 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-10 20:50:22 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-10 20:50:22 | INFO    | === STAGE: report ===
+2026-10-10 20:50:22 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-10 20:50:22 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-10 21:39:53 | INFO    | Ferroptosis pipeline v1.1.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-10 21:39:53 | INFO    | === STAGE: preprocess ===
+2026-10-10 21:40:39 | INFO    | TCGA processed: 458 samples, 19938 genes, 389 valid OS
+2026-10-10 21:40:49 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-10 21:41:14 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-10 21:41:16 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-10 21:41:25 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-10 21:41:30 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-10 21:41:42 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=none
+2026-10-10 21:41:42 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-10 21:41:42 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-10 21:41:49 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-10 21:41:49 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (14 rows)
+2026-10-10 21:41:49 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-10 21:41:49 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-10 21:41:49 | INFO    | saved results/csv/sample_exclusion_audit.csv (610 rows)
+2026-10-10 21:41:49 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-10 21:41:49 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-10 21:41:49 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-10 21:41:50 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-10 21:41:50 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-10 21:41:50 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-10 21:41:51 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-10 21:41:51 | INFO    | === STAGE: prognosis ===
+2026-10-10 21:41:58 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-10 21:41:58 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-10 21:41:59 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-10 21:41:59 | INFO    | saved results/csv/selected_features.csv (4 rows)
+2026-10-10 21:41:59 | INFO    | saved results/csv/prognosis_model_coefficients.csv (9 rows)
+2026-10-10 21:41:59 | INFO    | Frozen model: 4 features, penalizer=5.0 (frozen BEFORE external validation)
+2026-10-10 21:42:10 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-10 21:42:14 | INFO    | saved results/csv/prognosis_validation_metrics.csv (11 rows)
+2026-10-10 21:42:14 | INFO    | saved results/csv/prognosis_patient_scores.csv (1035 rows)
+2026-10-10 21:42:14 | INFO    | === STAGE: benchmark ===
+2026-10-10 21:42:21 | INFO    | Random-control universe: 12071 genes; set size k=36; N=200
+2026-10-10 21:42:47 | INFO    | random controls: 25/200
+2026-10-10 21:43:13 | INFO    | random controls: 50/200
+2026-10-10 21:43:41 | INFO    | random controls: 75/200
+2026-10-10 21:44:27 | INFO    | random controls: 100/200
+2026-10-10 21:44:52 | INFO    | random controls: 125/200
+2026-10-10 21:45:18 | INFO    | random controls: 150/200
+2026-10-10 21:45:45 | INFO    | random controls: 175/200
+2026-10-10 21:46:10 | INFO    | random controls: 200/200
+2026-10-10 21:46:11 | INFO    | saved results/csv/signature_comparison.csv (12 rows)
+2026-10-10 21:46:11 | INFO    | === STAGE: classification ===
+2026-10-10 21:46:19 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-10 21:46:27 | INFO    | classification random controls 25/200
+2026-10-10 21:46:34 | INFO    | classification random controls 50/200
+2026-10-10 21:46:41 | INFO    | classification random controls 75/200
+2026-10-10 21:46:49 | INFO    | classification random controls 100/200
+2026-10-10 21:46:56 | INFO    | classification random controls 125/200
+2026-10-10 21:47:02 | INFO    | classification random controls 150/200
+2026-10-10 21:47:10 | INFO    | classification random controls 175/200
+2026-10-10 21:47:17 | INFO    | classification random controls 200/200
+2026-10-10 21:47:17 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-10 21:47:17 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-10 21:47:17 | INFO    | === STAGE: drug ===
+2026-10-10 21:47:17 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-10 21:47:17 | INFO    | === STAGE: figures ===
+2026-10-10 21:47:18 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-10 21:47:18 | INFO    | figure saved: fig02_missing_data
+2026-10-10 21:47:25 | INFO    | figure saved: fig03_expression_distributions
+2026-10-10 21:47:28 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-10 21:47:29 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-10 21:47:29 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-10 21:47:29 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-10 21:47:30 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-10 21:47:30 | INFO    | figure saved: fig09_roc
+2026-10-10 21:47:30 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-10 21:47:30 | INFO    | figure saved: fig11_random_benchmark
+2026-10-10 21:47:30 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-10 21:47:30 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-10 21:47:30 | INFO    | === STAGE: report ===
+2026-10-10 21:47:30 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-10 21:47:31 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-10 22:06:05 | INFO    | Ferroptosis pipeline v1.1.1 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-10 22:06:05 | INFO    | === STAGE: fetch ===
+2026-10-10 22:06:09 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-10 22:06:10 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-10 22:06:10 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-10 22:06:13 | INFO    | TCGA downloads: 50/458
+2026-10-10 22:06:14 | INFO    | TCGA downloads: 100/458
+2026-10-10 22:06:14 | INFO    | TCGA downloads: 150/458
+2026-10-10 22:06:15 | INFO    | TCGA downloads: 200/458
+2026-10-10 22:06:15 | INFO    | TCGA downloads: 250/458
+2026-10-10 22:06:16 | INFO    | TCGA downloads: 300/458
+2026-10-10 22:06:16 | INFO    | TCGA downloads: 350/458
+2026-10-10 22:06:17 | INFO    | TCGA downloads: 400/458
+2026-10-10 22:06:17 | INFO    | TCGA downloads: 450/458
+2026-10-10 22:06:17 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-10 22:06:51 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-10 22:07:14 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-10 22:07:14 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-10 22:07:14 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-10 22:12:04 | INFO    | Ferroptosis pipeline v1.1.1 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-10 22:12:04 | INFO    | === STAGE: fetch ===
+2026-10-10 22:12:05 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-10 22:12:08 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-10 22:12:08 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-10 22:12:11 | INFO    | TCGA downloads: 50/458
+2026-10-10 22:12:11 | INFO    | TCGA downloads: 100/458
+2026-10-10 22:12:12 | INFO    | TCGA downloads: 150/458
+2026-10-10 22:12:12 | INFO    | TCGA downloads: 200/458
+2026-10-10 22:12:12 | INFO    | TCGA downloads: 250/458
+2026-10-10 22:12:12 | INFO    | TCGA downloads: 300/458
+2026-10-10 22:12:12 | INFO    | TCGA downloads: 350/458
+2026-10-10 22:12:13 | INFO    | TCGA downloads: 400/458
+2026-10-10 22:12:13 | INFO    | TCGA downloads: 450/458
+2026-10-10 22:12:13 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-10 22:12:47 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-10 22:13:07 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-10 22:13:07 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-10 22:13:07 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-10 22:13:09 | INFO    | Ferroptosis pipeline v1.1.1 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-10 22:13:09 | INFO    | === STAGE: preprocess ===
+2026-10-10 22:13:50 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-10 22:13:59 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-10 22:14:00 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-10 22:14:24 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-10 22:14:26 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-10 22:14:27 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-10 22:14:35 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-10 22:14:39 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-10 22:14:40 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-10 22:14:51 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-10 22:14:51 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-10 22:14:51 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-10 22:14:58 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/sample_exclusion_audit.csv (270 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-10 22:14:58 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-10 22:14:59 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-10 22:14:59 | INFO    | === STAGE: prognosis ===
+2026-10-10 22:15:07 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-10 22:15:07 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-10 22:15:08 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-10 22:15:08 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-10 22:15:08 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-10 22:15:08 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0] (frozen BEFORE external validation)
+2026-10-10 22:15:18 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-10 22:15:23 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-10 22:15:23 | INFO    | saved results/csv/prognosis_patient_scores.csv (1306 rows)
+2026-10-10 22:15:23 | INFO    | === STAGE: benchmark ===
+2026-10-10 22:15:30 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-10 22:15:31 | INFO    | saved results/csv/signature_comparison.csv (16 rows)
+2026-10-10 22:15:31 | INFO    | === STAGE: classification ===
+2026-10-10 22:15:38 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-10 22:15:47 | INFO    | classification random controls 25/200
+2026-10-10 22:15:54 | INFO    | classification random controls 50/200
+2026-10-10 22:16:01 | INFO    | classification random controls 75/200
+2026-10-10 22:16:09 | INFO    | classification random controls 100/200
+2026-10-10 22:16:16 | INFO    | classification random controls 125/200
+2026-10-10 22:16:23 | INFO    | classification random controls 150/200
+2026-10-10 22:16:30 | INFO    | classification random controls 175/200
+2026-10-10 22:16:37 | INFO    | classification random controls 200/200
+2026-10-10 22:16:37 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-10 22:16:37 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-10 22:16:37 | INFO    | === STAGE: drug ===
+2026-10-10 22:16:37 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-10 22:16:37 | INFO    | === STAGE: figures ===
+2026-10-10 22:16:37 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-10 22:16:37 | INFO    | figure saved: fig02_missing_data
+2026-10-10 22:16:45 | INFO    | figure saved: fig03_expression_distributions
+2026-10-10 22:16:48 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-10 22:16:49 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-10 22:16:49 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-10 22:16:49 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-10 22:16:50 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-10 22:16:50 | INFO    | figure saved: fig09_roc
+2026-10-10 22:16:50 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-10 22:16:50 | INFO    | figure saved: fig11_random_benchmark
+2026-10-10 22:16:50 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-10 22:16:50 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-10 22:16:50 | INFO    | === STAGE: report ===
+2026-10-10 22:16:50 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-10 22:16:50 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 00:35:25 | WARNING | config.yaml overrides penalizer_grid with [0.05, 0.5, 5.0] (code default [0.05, 0.5, 5.0, 50.0, 500.0]); edit/delete that key if unintended
+2026-10-11 00:35:25 | INFO    | Ferroptosis pipeline v1.2.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 00:35:25 | INFO    | === STAGE: fetch ===
+2026-10-11 00:35:26 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 00:35:27 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 00:35:27 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 00:35:30 | INFO    | TCGA downloads: 50/458
+2026-10-11 00:35:30 | INFO    | TCGA downloads: 100/458
+2026-10-11 00:35:30 | INFO    | TCGA downloads: 150/458
+2026-10-11 00:35:31 | INFO    | TCGA downloads: 200/458
+2026-10-11 00:35:31 | INFO    | TCGA downloads: 250/458
+2026-10-11 00:35:31 | INFO    | TCGA downloads: 300/458
+2026-10-11 00:35:32 | INFO    | TCGA downloads: 350/458
+2026-10-11 00:35:32 | INFO    | TCGA downloads: 400/458
+2026-10-11 00:35:32 | INFO    | TCGA downloads: 450/458
+2026-10-11 00:35:32 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 00:36:05 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 00:36:25 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 00:36:25 | INFO    | === STAGE: preprocess ===
+2026-10-11 00:38:17 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 00:38:37 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 00:38:40 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 00:39:46 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 00:39:51 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 00:39:53 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 00:40:15 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 00:40:24 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 00:40:26 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 00:40:56 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 00:40:56 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 00:40:56 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 00:41:31 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/sample_exclusion_audit.csv (270 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 00:41:31 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 00:41:33 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 00:41:34 | INFO    | === STAGE: prognosis ===
+2026-10-11 00:41:34 | WARNING | prognosis: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:41:34 | INFO    | === STAGE: benchmark ===
+2026-10-11 00:41:34 | WARNING | benchmark: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:41:34 | INFO    | === STAGE: classification ===
+2026-10-11 00:41:34 | WARNING | classification: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:41:34 | INFO    | === STAGE: drug ===
+2026-10-11 00:41:34 | WARNING | drug: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:41:34 | INFO    | === STAGE: figures ===
+2026-10-11 00:41:35 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 00:41:36 | INFO    | figure saved: fig02_missing_data
+2026-10-11 00:42:01 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 00:42:03 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 00:42:12 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 00:42:14 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 00:42:16 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 00:42:17 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 00:42:17 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 00:42:18 | INFO    | figure saved: fig09_roc
+2026-10-11 00:42:19 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 00:42:21 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 00:42:21 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 00:42:21 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 00:42:21 | INFO    | === STAGE: report ===
+2026-10-11 00:42:21 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 00:42:21 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 00:52:35 | WARNING | config.yaml overrides penalizer_grid with [0.05, 0.5, 5.0] (code default [0.05, 0.5, 5.0, 50.0, 500.0]); edit/delete that key if unintended
+2026-10-11 00:52:35 | INFO    | Ferroptosis pipeline v1.2.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 00:52:35 | INFO    | === STAGE: fetch ===
+2026-10-11 00:52:37 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 00:52:39 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 00:52:39 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 00:52:42 | INFO    | TCGA downloads: 50/458
+2026-10-11 00:52:42 | INFO    | TCGA downloads: 100/458
+2026-10-11 00:52:43 | INFO    | TCGA downloads: 150/458
+2026-10-11 00:52:43 | INFO    | TCGA downloads: 200/458
+2026-10-11 00:52:45 | INFO    | TCGA downloads: 250/458
+2026-10-11 00:52:46 | INFO    | TCGA downloads: 300/458
+2026-10-11 00:52:47 | INFO    | TCGA downloads: 350/458
+2026-10-11 00:52:47 | INFO    | TCGA downloads: 400/458
+2026-10-11 00:52:48 | INFO    | TCGA downloads: 450/458
+2026-10-11 00:52:48 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 00:53:25 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 00:53:46 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 00:53:46 | INFO    | === STAGE: preprocess ===
+2026-10-11 00:55:41 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 00:56:00 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 00:56:02 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 00:57:09 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 00:57:13 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 00:57:15 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 00:57:36 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 00:57:44 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 00:57:46 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 00:58:18 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 00:58:18 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 00:58:18 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 00:58:40 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/sample_exclusion_audit.csv (270 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 00:58:40 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 00:58:43 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 00:58:43 | INFO    | === STAGE: prognosis ===
+2026-10-11 00:58:43 | WARNING | prognosis: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:58:43 | INFO    | === STAGE: benchmark ===
+2026-10-11 00:58:43 | WARNING | benchmark: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:58:43 | INFO    | === STAGE: classification ===
+2026-10-11 00:58:43 | WARNING | classification: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:58:43 | INFO    | === STAGE: drug ===
+2026-10-11 00:58:43 | WARNING | drug: Gene panel is PROVISIONAL. Confirm/replace config/ferroptosis_genes.csv (set confirmed=True or panel_confirmed: true in config.yaml) or re-run with --accept-provisional-panel.
+2026-10-11 00:58:43 | INFO    | === STAGE: figures ===
+2026-10-11 00:58:46 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 00:58:50 | INFO    | figure saved: fig02_missing_data
+2026-10-11 00:59:17 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 00:59:18 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 00:59:28 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 00:59:29 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 00:59:32 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 00:59:33 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 00:59:34 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 00:59:34 | INFO    | figure saved: fig09_roc
+2026-10-11 00:59:35 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 00:59:37 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 00:59:37 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 00:59:37 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 00:59:37 | INFO    | === STAGE: report ===
+2026-10-11 00:59:37 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 00:59:37 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 01:09:31 | WARNING | config.yaml overrides penalizer_grid with [0.05, 0.5, 5.0] (code default [0.05, 0.5, 5.0, 50.0, 500.0]); edit/delete that key if unintended
+2026-10-11 01:09:31 | INFO    | Ferroptosis pipeline v1.2.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 01:09:31 | INFO    | === STAGE: fetch ===
+2026-10-11 01:09:32 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 01:09:34 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 01:09:34 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 01:09:37 | INFO    | TCGA downloads: 50/458
+2026-10-11 01:09:37 | INFO    | TCGA downloads: 100/458
+2026-10-11 01:09:38 | INFO    | TCGA downloads: 150/458
+2026-10-11 01:09:39 | INFO    | TCGA downloads: 200/458
+2026-10-11 01:09:41 | INFO    | TCGA downloads: 250/458
+2026-10-11 01:09:41 | INFO    | TCGA downloads: 300/458
+2026-10-11 01:09:42 | INFO    | TCGA downloads: 350/458
+2026-10-11 01:09:43 | INFO    | TCGA downloads: 400/458
+2026-10-11 01:09:43 | INFO    | TCGA downloads: 450/458
+2026-10-11 01:09:43 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 01:10:20 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 01:10:40 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 01:10:40 | INFO    | === STAGE: preprocess ===
+2026-10-11 01:12:31 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 01:12:49 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 01:12:51 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 01:13:26 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 01:13:28 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 01:13:29 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 01:13:41 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 01:13:46 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 01:13:47 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 01:14:03 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 01:14:03 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 01:14:03 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 01:14:15 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/sample_exclusion_audit.csv (270 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 01:14:15 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 01:14:16 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 01:14:16 | INFO    | === STAGE: prognosis ===
+2026-10-11 01:14:28 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:14:28 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 01:14:28 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 01:14:30 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 01:14:30 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 01:14:30 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 01:14:30 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0] (frozen BEFORE external validation)
+2026-10-11 01:14:45 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 01:14:52 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 01:14:52 | INFO    | saved results/csv/prognosis_patient_scores.csv (1233 rows)
+2026-10-11 01:14:52 | INFO    | === STAGE: benchmark ===
+2026-10-11 01:15:03 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:15:03 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 01:15:05 | INFO    | saved results/csv/signature_comparison.csv (16 rows)
+2026-10-11 01:15:05 | INFO    | === STAGE: classification ===
+2026-10-11 01:15:16 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:15:16 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 01:15:30 | INFO    | classification random controls 25/200
+2026-10-11 01:15:42 | INFO    | classification random controls 50/200
+2026-10-11 01:15:53 | INFO    | classification random controls 75/200
+2026-10-11 01:16:05 | INFO    | classification random controls 100/200
+2026-10-11 01:16:17 | INFO    | classification random controls 125/200
+2026-10-11 01:16:29 | INFO    | classification random controls 150/200
+2026-10-11 01:16:41 | INFO    | classification random controls 175/200
+2026-10-11 01:16:53 | INFO    | classification random controls 200/200
+2026-10-11 01:16:53 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 01:16:53 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 01:16:53 | INFO    | === STAGE: drug ===
+2026-10-11 01:16:53 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 01:16:53 | INFO    | === STAGE: figures ===
+2026-10-11 01:16:54 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 01:16:54 | INFO    | figure saved: fig02_missing_data
+2026-10-11 01:17:06 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:17:07 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 01:17:11 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 01:17:12 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 01:17:13 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 01:17:13 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 01:17:14 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 01:17:14 | INFO    | figure saved: fig09_roc
+2026-10-11 01:17:14 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 01:17:15 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 01:17:15 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 01:17:15 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 01:17:15 | INFO    | === STAGE: report ===
+2026-10-11 01:17:15 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 01:17:15 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 01:27:34 | WARNING | config.yaml overrides penalizer_grid with [0.05, 0.5, 5.0] (code default [0.05, 0.5, 5.0, 50.0, 500.0]); edit/delete that key if unintended
+2026-10-11 01:27:34 | INFO    | Ferroptosis pipeline v1.2.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 01:27:34 | INFO    | === STAGE: fetch ===
+2026-10-11 01:27:35 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 01:27:37 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 01:27:37 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 01:27:39 | INFO    | TCGA downloads: 50/458
+2026-10-11 01:27:39 | INFO    | TCGA downloads: 100/458
+2026-10-11 01:27:39 | INFO    | TCGA downloads: 150/458
+2026-10-11 01:27:40 | INFO    | TCGA downloads: 200/458
+2026-10-11 01:27:40 | INFO    | TCGA downloads: 250/458
+2026-10-11 01:27:40 | INFO    | TCGA downloads: 300/458
+2026-10-11 01:27:40 | INFO    | TCGA downloads: 350/458
+2026-10-11 01:27:41 | INFO    | TCGA downloads: 400/458
+2026-10-11 01:27:41 | INFO    | TCGA downloads: 450/458
+2026-10-11 01:27:41 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 01:28:16 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 01:28:35 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 01:28:35 | INFO    | === STAGE: preprocess ===
+2026-10-11 01:29:18 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 01:29:28 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 01:29:29 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 01:29:53 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 01:29:55 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 01:29:56 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 01:30:04 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 01:30:08 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 01:30:09 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 01:30:22 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 01:30:22 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 01:30:22 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 01:30:29 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/sample_exclusion_audit.csv (270 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 01:30:29 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 01:30:30 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 01:30:30 | INFO    | === STAGE: prognosis ===
+2026-10-11 01:30:38 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:30:38 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 01:30:38 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 01:30:39 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 01:30:39 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 01:30:40 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 01:30:40 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0] (frozen BEFORE external validation)
+2026-10-11 01:30:50 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 01:30:55 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 01:30:55 | INFO    | saved results/csv/prognosis_patient_scores.csv (1233 rows)
+2026-10-11 01:30:55 | INFO    | === STAGE: benchmark ===
+2026-10-11 01:31:03 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:31:03 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 01:31:04 | INFO    | saved results/csv/signature_comparison.csv (16 rows)
+2026-10-11 01:31:04 | INFO    | === STAGE: classification ===
+2026-10-11 01:31:12 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:31:12 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 01:31:21 | INFO    | classification random controls 25/200
+2026-10-11 01:31:29 | INFO    | classification random controls 50/200
+2026-10-11 01:31:36 | INFO    | classification random controls 75/200
+2026-10-11 01:31:43 | INFO    | classification random controls 100/200
+2026-10-11 01:31:50 | INFO    | classification random controls 125/200
+2026-10-11 01:31:57 | INFO    | classification random controls 150/200
+2026-10-11 01:32:04 | INFO    | classification random controls 175/200
+2026-10-11 01:32:11 | INFO    | classification random controls 200/200
+2026-10-11 01:32:11 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 01:32:11 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 01:32:11 | INFO    | === STAGE: drug ===
+2026-10-11 01:32:11 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 01:32:11 | INFO    | === STAGE: figures ===
+2026-10-11 01:32:11 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 01:32:12 | INFO    | figure saved: fig02_missing_data
+2026-10-11 01:32:19 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 01:32:19 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 01:32:22 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 01:32:22 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 01:32:23 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 01:32:23 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 01:32:23 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 01:32:23 | INFO    | figure saved: fig09_roc
+2026-10-11 01:32:24 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 01:32:24 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 01:32:24 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 01:32:24 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 01:32:24 | INFO    | === STAGE: report ===
+2026-10-11 01:32:24 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 01:32:24 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 13:53:31 | WARNING | config.yaml overrides penalizer_grid with [0.05, 0.5, 5.0] (code default [0.05, 0.5, 5.0, 50.0, 500.0]); edit/delete that key if unintended
+2026-10-11 13:53:31 | INFO    | Ferroptosis pipeline v1.2.2 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 13:53:31 | INFO    | === STAGE: fetch ===
+2026-10-11 13:53:34 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 13:53:36 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 13:53:36 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 13:53:38 | INFO    | TCGA downloads: 50/458
+2026-10-11 13:53:38 | INFO    | TCGA downloads: 100/458
+2026-10-11 13:53:38 | INFO    | TCGA downloads: 150/458
+2026-10-11 13:53:39 | INFO    | TCGA downloads: 200/458
+2026-10-11 13:53:39 | INFO    | TCGA downloads: 250/458
+2026-10-11 13:53:39 | INFO    | TCGA downloads: 300/458
+2026-10-11 13:53:39 | INFO    | TCGA downloads: 350/458
+2026-10-11 13:53:39 | INFO    | TCGA downloads: 400/458
+2026-10-11 13:53:40 | INFO    | TCGA downloads: 450/458
+2026-10-11 13:53:40 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 13:54:32 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 13:54:52 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 13:54:52 | INFO    | === STAGE: preprocess ===
+2026-10-11 13:54:52 | INFO    | preprocess TCGA-COAD: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 13:54:52 | INFO    | preprocess GSE39582: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 13:54:52 | INFO    | preprocess GSE17536: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 13:54:52 | INFO    | preprocess GSE14333: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 13:54:52 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 13:54:52 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 13:54:59 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 13:54:59 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 13:54:59 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 13:54:59 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/sample_exclusion_audit.csv (246 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 13:55:00 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 13:55:00 | INFO    | === STAGE: prognosis ===
+2026-10-11 13:55:08 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 13:55:08 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 13:55:08 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 13:55:09 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 13:55:09 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 13:55:09 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 13:55:09 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0] (frozen BEFORE external validation)
+2026-10-11 13:55:19 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 13:55:23 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 13:55:23 | INFO    | saved results/csv/prognosis_patient_scores.csv (1233 rows)
+2026-10-11 13:55:23 | INFO    | === STAGE: benchmark ===
+2026-10-11 13:55:30 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 13:55:30 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 13:55:30 | WARNING | random-control cache discarded: cohorts/panel/grid changed since it was computed (fingerprint None -> 877747030ead575c)
+2026-10-11 13:55:56 | INFO    | random controls: 25/200
+2026-10-11 13:56:20 | INFO    | random controls: 50/200
+2026-10-11 13:56:45 | INFO    | random controls: 75/200
+2026-10-11 13:57:10 | INFO    | random controls: 100/200
+2026-10-11 13:57:35 | INFO    | random controls: 125/200
+2026-10-11 13:58:00 | INFO    | random controls: 150/200
+2026-10-11 13:58:24 | INFO    | random controls: 175/200
+2026-10-11 13:58:49 | INFO    | random controls: 200/200
+2026-10-11 13:58:50 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 13:58:50 | INFO    | === STAGE: classification ===
+2026-10-11 13:58:57 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 13:58:57 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 13:59:04 | INFO    | classification random controls 25/200
+2026-10-11 13:59:11 | INFO    | classification random controls 50/200
+2026-10-11 13:59:18 | INFO    | classification random controls 75/200
+2026-10-11 13:59:25 | INFO    | classification random controls 100/200
+2026-10-11 13:59:31 | INFO    | classification random controls 125/200
+2026-10-11 13:59:38 | INFO    | classification random controls 150/200
+2026-10-11 13:59:44 | INFO    | classification random controls 175/200
+2026-10-11 13:59:51 | INFO    | classification random controls 200/200
+2026-10-11 13:59:51 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 13:59:51 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 13:59:51 | INFO    | === STAGE: drug ===
+2026-10-11 13:59:51 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 13:59:51 | INFO    | === STAGE: figures ===
+2026-10-11 13:59:51 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 13:59:51 | INFO    | figure saved: fig02_missing_data
+2026-10-11 13:59:58 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 13:59:59 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 14:00:01 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 14:00:02 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 14:00:02 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 14:00:03 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 14:00:03 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 14:00:03 | INFO    | figure saved: fig09_roc
+2026-10-11 14:00:03 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 14:00:03 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 14:00:03 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 14:00:03 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 14:00:03 | INFO    | === STAGE: report ===
+2026-10-11 14:00:04 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 14:00:04 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 14:06:39 | INFO    | Ferroptosis pipeline v1.2.2 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 14:06:39 | INFO    | === STAGE: fetch ===
+2026-10-11 14:06:40 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 14:06:41 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 14:06:41 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 14:06:44 | INFO    | TCGA downloads: 50/458
+2026-10-11 14:06:44 | INFO    | TCGA downloads: 100/458
+2026-10-11 14:06:45 | INFO    | TCGA downloads: 150/458
+2026-10-11 14:06:45 | INFO    | TCGA downloads: 200/458
+2026-10-11 14:06:46 | INFO    | TCGA downloads: 250/458
+2026-10-11 14:06:46 | INFO    | TCGA downloads: 300/458
+2026-10-11 14:06:47 | INFO    | TCGA downloads: 350/458
+2026-10-11 14:06:47 | INFO    | TCGA downloads: 400/458
+2026-10-11 14:06:47 | INFO    | TCGA downloads: 450/458
+2026-10-11 14:06:47 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 14:07:40 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 14:08:00 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 14:08:00 | INFO    | === STAGE: preprocess ===
+2026-10-11 14:08:00 | INFO    | preprocess TCGA-COAD: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:08:00 | INFO    | preprocess GSE39582: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:08:00 | INFO    | preprocess GSE17536: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:08:00 | INFO    | preprocess GSE14333: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:08:00 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 14:08:00 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 14:08:36 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 14:08:36 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 14:08:36 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 14:08:36 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 14:08:37 | INFO    | saved results/csv/sample_exclusion_audit.csv (246 rows)
+2026-10-11 14:08:37 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 14:08:37 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 14:08:37 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 14:08:37 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 14:08:37 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 14:08:37 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 14:08:39 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 14:08:39 | INFO    | === STAGE: prognosis ===
+2026-10-11 14:09:06 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:09:06 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 14:09:06 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 14:09:11 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 14:09:11 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 14:09:11 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 14:09:11 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-11 14:09:57 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 14:10:06 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 14:10:06 | INFO    | saved results/csv/prognosis_patient_scores.csv (1233 rows)
+2026-10-11 14:10:06 | INFO    | === STAGE: benchmark ===
+2026-10-11 14:10:29 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:10:30 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 14:10:30 | WARNING | random-control cache discarded: cohorts/panel/grid changed since it was computed (fingerprint 877747030ead575c -> 9d6ca87e5701a5b5)
+2026-10-11 14:12:39 | INFO    | random controls: 25/200
+2026-10-11 14:14:56 | INFO    | random controls: 50/200
+2026-10-11 14:15:31 | INFO    | random controls: 75/200
+2026-10-11 14:15:59 | INFO    | random controls: 100/200
+2026-10-11 14:16:27 | INFO    | random controls: 125/200
+2026-10-11 14:16:55 | INFO    | random controls: 150/200
+2026-10-11 14:17:23 | INFO    | random controls: 175/200
+2026-10-11 14:17:51 | INFO    | random controls: 200/200
+2026-10-11 14:17:52 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 14:17:52 | INFO    | === STAGE: classification ===
+2026-10-11 14:17:59 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:17:59 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 14:18:07 | INFO    | classification random controls 25/200
+2026-10-11 14:18:13 | INFO    | classification random controls 50/200
+2026-10-11 14:18:20 | INFO    | classification random controls 75/200
+2026-10-11 14:18:27 | INFO    | classification random controls 100/200
+2026-10-11 14:18:34 | INFO    | classification random controls 125/200
+2026-10-11 14:18:41 | INFO    | classification random controls 150/200
+2026-10-11 14:18:48 | INFO    | classification random controls 175/200
+2026-10-11 14:18:54 | INFO    | classification random controls 200/200
+2026-10-11 14:18:54 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 14:18:54 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 14:18:54 | INFO    | === STAGE: drug ===
+2026-10-11 14:18:54 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 14:18:54 | INFO    | === STAGE: figures ===
+2026-10-11 14:18:55 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 14:18:55 | INFO    | figure saved: fig02_missing_data
+2026-10-11 14:19:02 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:19:02 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 14:19:05 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 14:19:06 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 14:19:06 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 14:19:06 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 14:19:06 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 14:19:07 | INFO    | figure saved: fig09_roc
+2026-10-11 14:19:07 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 14:19:07 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 14:19:07 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 14:19:07 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 14:19:07 | INFO    | === STAGE: report ===
+2026-10-11 14:19:07 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 14:19:07 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 14:22:38 | INFO    | Ferroptosis pipeline v1.2.2 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 14:22:38 | INFO    | === STAGE: fetch ===
+2026-10-11 14:22:39 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 14:22:40 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 14:22:40 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 14:22:42 | INFO    | TCGA downloads: 50/458
+2026-10-11 14:22:42 | INFO    | TCGA downloads: 100/458
+2026-10-11 14:22:43 | INFO    | TCGA downloads: 150/458
+2026-10-11 14:22:43 | INFO    | TCGA downloads: 200/458
+2026-10-11 14:22:43 | INFO    | TCGA downloads: 250/458
+2026-10-11 14:22:43 | INFO    | TCGA downloads: 300/458
+2026-10-11 14:22:43 | INFO    | TCGA downloads: 350/458
+2026-10-11 14:22:43 | INFO    | TCGA downloads: 400/458
+2026-10-11 14:22:44 | INFO    | TCGA downloads: 450/458
+2026-10-11 14:22:44 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 14:23:36 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 14:23:56 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 14:23:56 | INFO    | === STAGE: preprocess ===
+2026-10-11 14:23:56 | INFO    | preprocess TCGA-COAD: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:23:56 | INFO    | preprocess GSE39582: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:23:56 | INFO    | preprocess GSE17536: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:23:56 | INFO    | preprocess GSE14333: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:23:56 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 14:23:56 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 14:24:03 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/sample_exclusion_audit.csv (246 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 14:24:03 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 14:24:04 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 14:24:04 | INFO    | === STAGE: prognosis ===
+2026-10-11 14:24:12 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:24:12 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 14:24:12 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 14:24:13 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 14:24:13 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 14:24:13 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 14:24:13 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-11 14:24:25 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 14:24:29 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 14:24:29 | INFO    | saved results/csv/prognosis_patient_scores.csv (1233 rows)
+2026-10-11 14:24:29 | INFO    | === STAGE: benchmark ===
+2026-10-11 14:24:36 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:24:36 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 14:24:38 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 14:24:38 | INFO    | === STAGE: classification ===
+2026-10-11 14:24:45 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:24:45 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 14:24:53 | INFO    | classification random controls 25/200
+2026-10-11 14:24:59 | INFO    | classification random controls 50/200
+2026-10-11 14:25:06 | INFO    | classification random controls 75/200
+2026-10-11 14:25:13 | INFO    | classification random controls 100/200
+2026-10-11 14:25:19 | INFO    | classification random controls 125/200
+2026-10-11 14:25:26 | INFO    | classification random controls 150/200
+2026-10-11 14:25:32 | INFO    | classification random controls 175/200
+2026-10-11 14:25:39 | INFO    | classification random controls 200/200
+2026-10-11 14:25:39 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 14:25:39 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 14:25:39 | INFO    | === STAGE: drug ===
+2026-10-11 14:25:39 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 14:25:39 | INFO    | === STAGE: figures ===
+2026-10-11 14:25:40 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 14:25:40 | INFO    | figure saved: fig02_missing_data
+2026-10-11 14:25:47 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:25:47 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 14:25:50 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 14:25:51 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 14:25:51 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 14:25:51 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 14:25:51 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 14:25:52 | INFO    | figure saved: fig09_roc
+2026-10-11 14:25:52 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 14:25:52 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 14:25:52 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 14:25:52 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 14:25:52 | INFO    | === STAGE: report ===
+2026-10-11 14:25:52 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 14:25:52 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 14:29:28 | INFO    | Ferroptosis pipeline v1.2.2 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 14:29:28 | INFO    | === STAGE: benchmark ===
+2026-10-11 14:29:35 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:29:35 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 14:30:04 | INFO    | random controls: 25/200
+2026-10-11 14:30:33 | INFO    | random controls: 50/200
+2026-10-11 14:31:01 | INFO    | random controls: 75/200
+2026-10-11 14:31:30 | INFO    | random controls: 100/200
+2026-10-11 14:31:58 | INFO    | random controls: 125/200
+2026-10-11 14:32:27 | INFO    | random controls: 150/200
+2026-10-11 14:32:55 | INFO    | random controls: 175/200
+2026-10-11 14:33:24 | INFO    | random controls: 200/200
+2026-10-11 14:33:24 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 14:33:24 | INFO    | === STAGE: classification ===
+2026-10-11 14:33:31 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:33:31 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 14:33:40 | INFO    | classification random controls 25/200
+2026-10-11 14:33:46 | INFO    | classification random controls 50/200
+2026-10-11 14:33:53 | INFO    | classification random controls 75/200
+2026-10-11 14:34:00 | INFO    | classification random controls 100/200
+2026-10-11 14:34:07 | INFO    | classification random controls 125/200
+2026-10-11 14:34:14 | INFO    | classification random controls 150/200
+2026-10-11 14:34:21 | INFO    | classification random controls 175/200
+2026-10-11 14:34:28 | INFO    | classification random controls 200/200
+2026-10-11 14:34:28 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 14:34:28 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 14:34:28 | INFO    | === STAGE: figures ===
+2026-10-11 14:34:29 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 14:34:29 | INFO    | figure saved: fig02_missing_data
+2026-10-11 14:34:36 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:34:36 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 14:34:39 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 14:34:39 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 14:34:40 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 14:34:40 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 14:34:40 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 14:34:41 | INFO    | figure saved: fig09_roc
+2026-10-11 14:34:41 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 14:34:41 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 14:34:41 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 14:34:41 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 14:34:41 | INFO    | === STAGE: report ===
+2026-10-11 14:34:41 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 14:34:41 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 14:52:02 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-11 14:52:02 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-11 14:52:02 | INFO    | Ferroptosis pipeline v1.3.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 14:52:02 | INFO    | === STAGE: fetch ===
+2026-10-11 14:52:04 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 14:52:05 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 14:52:05 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 14:52:08 | INFO    | TCGA downloads: 50/458
+2026-10-11 14:52:09 | INFO    | TCGA downloads: 100/458
+2026-10-11 14:52:10 | INFO    | TCGA downloads: 150/458
+2026-10-11 14:52:10 | INFO    | TCGA downloads: 200/458
+2026-10-11 14:52:11 | INFO    | TCGA downloads: 250/458
+2026-10-11 14:52:12 | INFO    | TCGA downloads: 300/458
+2026-10-11 14:52:13 | INFO    | TCGA downloads: 350/458
+2026-10-11 14:52:14 | INFO    | TCGA downloads: 400/458
+2026-10-11 14:52:14 | INFO    | TCGA downloads: 450/458
+2026-10-11 14:52:14 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 14:53:06 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 14:53:26 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 14:53:26 | INFO    | === STAGE: preprocess ===
+2026-10-11 14:53:26 | INFO    | preprocess TCGA-COAD: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:53:26 | INFO    | preprocess GSE39582: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:53:26 | INFO    | preprocess GSE17536: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:53:26 | INFO    | preprocess GSE14333: processed files exist, skipped (use --reprocess to redo)
+2026-10-11 14:53:26 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 14:53:26 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 14:53:55 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/sample_exclusion_audit.csv (246 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 14:53:55 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 14:53:57 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 14:53:57 | INFO    | === STAGE: prognosis ===
+2026-10-11 14:54:22 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:54:22 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 14:54:22 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 14:54:27 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 14:54:27 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 14:54:27 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 14:54:27 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-11 14:55:09 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 14:55:25 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 14:55:25 | INFO    | saved results/csv/prognosis_patient_scores.csv (1233 rows)
+2026-10-11 14:55:25 | INFO    | === STAGE: benchmark ===
+2026-10-11 14:55:58 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 14:55:58 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 14:57:51 | INFO    | random controls: 25/200
+2026-10-11 14:59:55 | INFO    | random controls: 50/200
+2026-10-11 15:01:58 | INFO    | random controls: 75/200
+2026-10-11 15:03:56 | INFO    | random controls: 100/200
+2026-10-11 15:05:55 | INFO    | random controls: 125/200
+2026-10-11 15:07:49 | INFO    | random controls: 150/200
+2026-10-11 15:09:44 | INFO    | random controls: 175/200
+2026-10-11 15:11:38 | INFO    | random controls: 200/200
+2026-10-11 15:11:41 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 15:11:41 | INFO    | === STAGE: classification ===
+2026-10-11 15:12:06 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 15:12:07 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 15:12:38 | INFO    | classification random controls 25/200
+2026-10-11 15:13:03 | INFO    | classification random controls 50/200
+2026-10-11 15:13:29 | INFO    | classification random controls 75/200
+2026-10-11 15:13:57 | INFO    | classification random controls 100/200
+2026-10-11 15:14:25 | INFO    | classification random controls 125/200
+2026-10-11 15:14:51 | INFO    | classification random controls 150/200
+2026-10-11 15:15:17 | INFO    | classification random controls 175/200
+2026-10-11 15:15:39 | INFO    | classification random controls 200/200
+2026-10-11 15:15:39 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 15:15:39 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 15:15:39 | INFO    | === STAGE: drug ===
+2026-10-11 15:15:39 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 15:15:39 | INFO    | === STAGE: figures ===
+2026-10-11 15:15:40 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 15:15:41 | INFO    | figure saved: fig02_missing_data
+2026-10-11 15:16:06 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 15:16:07 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 15:16:16 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 15:16:17 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 15:16:20 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 15:16:20 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 15:16:21 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 15:16:22 | INFO    | figure saved: fig09_roc
+2026-10-11 15:16:22 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 15:16:24 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 15:16:24 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 15:16:24 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 15:16:24 | INFO    | === STAGE: report ===
+2026-10-11 15:16:24 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 15:16:24 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 15:29:40 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-11 15:29:40 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-11 15:29:40 | INFO    | Ferroptosis pipeline v1.3.0 | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 15:29:40 | INFO    | === STAGE: fetch ===
+2026-10-11 15:29:41 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 15:29:42 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 15:29:42 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 15:29:45 | INFO    | TCGA downloads: 50/458
+2026-10-11 15:29:46 | INFO    | TCGA downloads: 100/458
+2026-10-11 15:29:46 | INFO    | TCGA downloads: 150/458
+2026-10-11 15:29:47 | INFO    | TCGA downloads: 200/458
+2026-10-11 15:29:48 | INFO    | TCGA downloads: 250/458
+2026-10-11 15:29:48 | INFO    | TCGA downloads: 300/458
+2026-10-11 15:29:48 | INFO    | TCGA downloads: 350/458
+2026-10-11 15:29:49 | INFO    | TCGA downloads: 400/458
+2026-10-11 15:29:49 | INFO    | TCGA downloads: 450/458
+2026-10-11 15:29:49 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 15:30:43 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 15:31:03 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 15:31:03 | INFO    | === STAGE: preprocess ===
+2026-10-11 15:33:02 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 15:33:21 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 15:33:24 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 15:34:28 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 15:34:32 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 15:34:34 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 15:34:58 | WARNING | GSE17536: OS event rate = 100.0% (73/73) -> verify coding with:  python run_all.py --inspect-geo GSE17536
+2026-10-11 15:34:58 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 15:35:07 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 15:35:09 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 15:35:43 | WARNING | GSE14333: DFS event rate = 22.1% (50/226); a 'cens' flag was inverted -> verify coding with:  python run_all.py --inspect-geo GSE14333
+2026-10-11 15:35:43 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 15:35:43 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 15:35:43 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 15:36:08 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/sample_exclusion_audit.csv (270 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 15:36:08 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 15:36:10 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 15:36:10 | INFO    | === STAGE: prognosis ===
+2026-10-11 15:36:35 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 15:36:35 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 15:36:35 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 15:36:40 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 15:36:40 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 15:36:40 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 15:36:40 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-11 15:37:21 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 15:37:37 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 15:37:37 | INFO    | saved results/csv/prognosis_patient_scores.csv (1233 rows)
+2026-10-11 15:37:37 | INFO    | === STAGE: benchmark ===
+2026-10-11 15:38:01 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 15:38:01 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 15:39:49 | INFO    | random controls: 25/200
+2026-10-11 15:41:39 | INFO    | random controls: 50/200
+2026-10-11 15:43:31 | INFO    | random controls: 75/200
+2026-10-11 15:45:25 | INFO    | random controls: 100/200
+2026-10-11 15:47:21 | INFO    | random controls: 125/200
+2026-10-11 15:49:21 | INFO    | random controls: 150/200
+2026-10-11 15:51:04 | INFO    | random controls: 175/200
+2026-10-11 15:52:41 | INFO    | random controls: 200/200
+2026-10-11 15:52:44 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 15:52:44 | INFO    | === STAGE: classification ===
+2026-10-11 15:53:16 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 15:53:16 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 15:53:32 | INFO    | classification random controls 25/200
+2026-10-11 15:53:54 | INFO    | classification random controls 50/200
+2026-10-11 15:54:16 | INFO    | classification random controls 75/200
+2026-10-11 15:54:38 | INFO    | classification random controls 100/200
+2026-10-11 15:54:58 | INFO    | classification random controls 125/200
+2026-10-11 15:55:18 | INFO    | classification random controls 150/200
+2026-10-11 15:55:39 | INFO    | classification random controls 175/200
+2026-10-11 15:55:59 | INFO    | classification random controls 200/200
+2026-10-11 15:55:59 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 15:55:59 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 15:55:59 | INFO    | === STAGE: drug ===
+2026-10-11 15:55:59 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 15:55:59 | INFO    | === STAGE: figures ===
+2026-10-11 15:56:01 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 15:56:02 | INFO    | figure saved: fig02_missing_data
+2026-10-11 15:56:34 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 15:56:35 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 15:56:46 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 15:56:48 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 15:56:50 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 15:56:51 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 15:56:52 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 15:56:52 | INFO    | figure saved: fig09_roc
+2026-10-11 15:56:53 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 15:56:55 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 15:56:55 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 15:56:55 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 15:56:55 | INFO    | === STAGE: report ===
+2026-10-11 15:56:55 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 15:56:55 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 16:04:44 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-11 16:04:44 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-11 16:04:45 | INFO    | Ferroptosis pipeline v1.3.2 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\run_all.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 16:04:45 | INFO    | === STAGE: fetch ===
+2026-10-11 16:04:46 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 16:04:48 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 16:04:48 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 16:04:50 | INFO    | TCGA downloads: 50/458
+2026-10-11 16:04:51 | INFO    | TCGA downloads: 100/458
+2026-10-11 16:04:51 | INFO    | TCGA downloads: 150/458
+2026-10-11 16:04:52 | INFO    | TCGA downloads: 200/458
+2026-10-11 16:04:52 | INFO    | TCGA downloads: 250/458
+2026-10-11 16:04:53 | INFO    | TCGA downloads: 300/458
+2026-10-11 16:04:53 | INFO    | TCGA downloads: 350/458
+2026-10-11 16:04:54 | INFO    | TCGA downloads: 400/458
+2026-10-11 16:04:54 | INFO    | TCGA downloads: 450/458
+2026-10-11 16:04:54 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 16:05:46 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 16:06:06 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 16:06:06 | INFO    | === STAGE: preprocess ===
+2026-10-11 16:08:06 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 16:08:33 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 16:08:36 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 16:09:43 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 16:09:47 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 16:09:50 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 16:10:11 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 16:10:21 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 16:10:23 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 16:10:53 | WARNING | GSE14333: DFS event rate = 22.1% (50/226); a 'cens' flag was inverted -> verify coding with:  python ferro_pipeline.py --inspect-geo GSE14333
+2026-10-11 16:10:53 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 16:10:53 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 16:10:53 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 16:11:26 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/sample_exclusion_audit.csv (166 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 16:11:26 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 16:11:28 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 16:11:28 | INFO    | === STAGE: prognosis ===
+2026-10-11 16:11:45 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 16:11:45 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 16:11:45 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 16:11:46 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 16:11:46 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 16:11:46 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 16:11:46 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-11 16:12:25 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 16:12:44 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 16:12:44 | INFO    | saved results/csv/prognosis_patient_scores.csv (1337 rows)
+2026-10-11 16:12:44 | INFO    | === STAGE: benchmark ===
+2026-10-11 16:13:17 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 16:13:17 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 16:15:04 | INFO    | random controls: 25/200
+2026-10-11 16:17:04 | INFO    | random controls: 50/200
+2026-10-11 16:19:00 | INFO    | random controls: 75/200
+2026-10-11 16:19:38 | INFO    | random controls: 100/200
+2026-10-11 16:21:07 | INFO    | random controls: 125/200
+2026-10-11 16:23:08 | INFO    | random controls: 150/200
+2026-10-11 16:25:09 | INFO    | random controls: 175/200
+2026-10-11 16:26:45 | INFO    | random controls: 200/200
+2026-10-11 16:26:48 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 16:26:48 | INFO    | === STAGE: classification ===
+2026-10-11 16:27:21 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 16:27:21 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 16:27:46 | INFO    | classification random controls 25/200
+2026-10-11 16:28:07 | INFO    | classification random controls 50/200
+2026-10-11 16:28:28 | INFO    | classification random controls 75/200
+2026-10-11 16:28:49 | INFO    | classification random controls 100/200
+2026-10-11 16:29:10 | INFO    | classification random controls 125/200
+2026-10-11 16:29:30 | INFO    | classification random controls 150/200
+2026-10-11 16:29:50 | INFO    | classification random controls 175/200
+2026-10-11 16:30:08 | INFO    | classification random controls 200/200
+2026-10-11 16:30:08 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 16:30:08 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 16:30:08 | INFO    | === STAGE: drug ===
+2026-10-11 16:30:08 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 16:30:08 | INFO    | === STAGE: figures ===
+2026-10-11 16:30:10 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 16:30:11 | INFO    | figure saved: fig02_missing_data
+2026-10-11 16:30:28 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 16:30:29 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 16:30:31 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 16:30:32 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 16:30:32 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 16:30:32 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 16:30:33 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 16:30:33 | INFO    | figure saved: fig09_roc
+2026-10-11 16:30:33 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 16:30:33 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 16:30:33 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 16:30:33 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 16:30:33 | INFO    | === STAGE: report ===
+2026-10-11 16:30:33 | INFO    | saved results/csv/analysis_summary.csv (3 rows)
+2026-10-11 16:30:33 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 17:10:26 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-11 17:10:26 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-11 17:10:26 | INFO    | Ferroptosis pipeline v1.4.0 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 17:10:26 | INFO    | === STAGE: fetch ===
+2026-10-11 17:10:27 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 17:10:29 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 17:10:29 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 17:10:31 | INFO    | TCGA downloads: 50/458
+2026-10-11 17:10:32 | INFO    | TCGA downloads: 100/458
+2026-10-11 17:10:32 | INFO    | TCGA downloads: 150/458
+2026-10-11 17:10:33 | INFO    | TCGA downloads: 200/458
+2026-10-11 17:10:34 | INFO    | TCGA downloads: 250/458
+2026-10-11 17:10:34 | INFO    | TCGA downloads: 300/458
+2026-10-11 17:10:35 | INFO    | TCGA downloads: 350/458
+2026-10-11 17:10:36 | INFO    | TCGA downloads: 400/458
+2026-10-11 17:10:36 | INFO    | TCGA downloads: 450/458
+2026-10-11 17:10:36 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 17:11:29 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 17:11:49 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 17:11:49 | INFO    | === STAGE: preprocess ===
+2026-10-11 17:12:35 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 17:12:48 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 17:12:49 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 17:13:16 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 17:13:18 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 17:13:19 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 17:13:29 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 17:13:34 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 17:13:35 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 17:13:49 | WARNING | GSE14333: DFS event rate = 22.1% (50/226); a 'cens' flag was inverted -> verify coding with:  python ferro_pipeline.py --inspect-geo GSE14333
+2026-10-11 17:13:49 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 17:13:49 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 17:13:49 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 17:13:58 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/sample_exclusion_audit.csv (166 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 17:13:58 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 17:13:59 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 17:13:59 | INFO    | === STAGE: prognosis ===
+2026-10-11 17:14:09 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:14:10 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 17:14:10 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 17:14:11 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 17:14:11 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 17:14:11 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 17:14:11 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-11 17:14:27 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 17:14:33 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 17:14:33 | INFO    | saved results/csv/prognosis_patient_scores.csv (1337 rows)
+2026-10-11 17:14:33 | INFO    | === STAGE: benchmark ===
+2026-10-11 17:14:43 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:14:43 | INFO    | Random-control universe: 12060 genes; set size k=36; N=25
+2026-10-11 17:15:17 | INFO    | random controls: 25/25
+2026-10-11 17:15:18 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 17:15:18 | INFO    | === STAGE: classification ===
+2026-10-11 17:15:27 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:15:27 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 17:15:37 | INFO    | classification random controls 25/25
+2026-10-11 17:15:37 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 17:15:37 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 17:15:37 | INFO    | === STAGE: drug ===
+2026-10-11 17:15:37 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 17:15:37 | INFO    | === STAGE: subtypes ===
+2026-10-11 17:15:47 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:15:53 | INFO    | saved results/csv/subtype_stability.csv (1 rows)
+2026-10-11 17:15:54 | INFO    | saved results/csv/ferroptosis_subtype_associations.csv (4 rows)
+2026-10-11 17:15:54 | INFO    | saved results/csv/ferroptosis_subtype_patients.csv (1415 rows)
+2026-10-11 17:15:59 | INFO    | subtype random controls 25/25
+2026-10-11 17:15:59 | INFO    | saved results/csv/subtype_vs_random.csv (4 rows)
+2026-10-11 17:15:59 | INFO    | === STAGE: cellline ===
+2026-10-11 17:16:10 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:16:10 | WARNING | cellline: no cell-line expression: GDSC RMA file missing and no DepMap files in data/raw/depmap/ (need an *Expression*.csv and Model.csv; run --check-data)
+2026-10-11 17:16:10 | INFO    | === STAGE: figures ===
+2026-10-11 17:16:11 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 17:16:11 | INFO    | figure saved: fig02_missing_data
+2026-10-11 17:16:23 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:16:23 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 17:16:27 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 17:16:28 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 17:16:29 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 17:16:29 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 17:16:29 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 17:16:29 | INFO    | figure saved: fig09_roc
+2026-10-11 17:16:29 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 17:16:30 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 17:16:30 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 17:16:30 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 17:16:30 | INFO    | === STAGE: ext_figures ===
+2026-10-11 17:16:31 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-11 17:16:41 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:16:42 | INFO    | figure saved: fig16_subtype_km
+2026-10-11 17:16:42 | WARNING | figure 'cellline' skipped: cell-line stage not run
+2026-10-11 17:16:42 | INFO    | === STAGE: report ===
+2026-10-11 17:16:42 | INFO    | saved results/csv/analysis_summary.csv (4 rows)
+2026-10-11 17:16:42 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 17:16:42 | INFO    | === STAGE: ext_report ===
+2026-10-11 17:16:42 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-11 17:38:32 | INFO    | Ferroptosis pipeline v1.4.0 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 17:38:32 | INFO    | === STAGE: cellline ===
+2026-10-11 17:39:05 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:39:05 | WARNING | cellline: no cell-line expression: GDSC RMA file missing and no DepMap files in data/raw/depmap/ (need an *Expression*.csv and Model.csv; run --check-data)
+2026-10-11 17:39:05 | INFO    | === STAGE: ext_figures ===
+2026-10-11 17:39:06 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-11 17:39:39 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:39:42 | INFO    | figure saved: fig16_subtype_km
+2026-10-11 17:39:42 | WARNING | figure 'cellline' skipped: cell-line stage not run
+2026-10-11 17:39:42 | INFO    | === STAGE: ext_report ===
+2026-10-11 17:39:42 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-11 17:39:42 | INFO    | saved results/csv/analysis_summary.csv (4 rows)
+2026-10-11 17:39:42 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 17:44:22 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-11 17:44:22 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-11 17:44:22 | INFO    | Ferroptosis pipeline v1.4.0 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-11 17:44:22 | INFO    | === STAGE: fetch ===
+2026-10-11 17:44:23 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-11 17:44:25 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-11 17:44:25 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-11 17:44:27 | INFO    | TCGA downloads: 50/458
+2026-10-11 17:44:28 | INFO    | TCGA downloads: 100/458
+2026-10-11 17:44:28 | INFO    | TCGA downloads: 150/458
+2026-10-11 17:44:28 | INFO    | TCGA downloads: 200/458
+2026-10-11 17:44:28 | INFO    | TCGA downloads: 250/458
+2026-10-11 17:44:29 | INFO    | TCGA downloads: 300/458
+2026-10-11 17:44:29 | INFO    | TCGA downloads: 350/458
+2026-10-11 17:44:29 | INFO    | TCGA downloads: 400/458
+2026-10-11 17:44:29 | INFO    | TCGA downloads: 450/458
+2026-10-11 17:44:29 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-11 17:45:21 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-11 17:45:41 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-11 17:45:41 | INFO    | === STAGE: preprocess ===
+2026-10-11 17:47:45 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-11 17:48:10 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-11 17:48:13 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-11 17:49:22 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-11 17:49:27 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-11 17:49:29 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-11 17:49:50 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-11 17:50:01 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-11 17:50:03 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-11 17:50:37 | WARNING | GSE14333: DFS event rate = 22.1% (50/226); a 'cens' flag was inverted -> verify coding with:  python ferro_pipeline.py --inspect-geo GSE14333
+2026-10-11 17:50:37 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-11 17:50:37 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-11 17:50:37 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-11 17:50:59 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/sample_exclusion_audit.csv (166 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-11 17:50:59 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-11 17:51:01 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-11 17:51:01 | INFO    | === STAGE: prognosis ===
+2026-10-11 17:51:36 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:51:36 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-11 17:51:36 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-11 17:51:42 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-11 17:51:42 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-11 17:51:42 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-11 17:51:42 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-11 17:52:28 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-11 17:52:46 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-11 17:52:46 | INFO    | saved results/csv/prognosis_patient_scores.csv (1337 rows)
+2026-10-11 17:52:46 | INFO    | === STAGE: benchmark ===
+2026-10-11 17:53:20 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 17:53:21 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-11 17:55:45 | INFO    | random controls: 25/200
+2026-10-11 17:58:06 | INFO    | random controls: 50/200
+2026-10-11 17:58:47 | INFO    | random controls: 75/200
+2026-10-11 17:59:40 | INFO    | random controls: 100/200
+2026-10-11 18:01:37 | INFO    | random controls: 125/200
+2026-10-11 18:02:54 | INFO    | random controls: 150/200
+2026-10-11 18:05:13 | INFO    | random controls: 175/200
+2026-10-11 18:07:33 | INFO    | random controls: 200/200
+2026-10-11 18:07:36 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-11 18:07:36 | INFO    | === STAGE: classification ===
+2026-10-11 18:08:02 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 18:08:03 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-11 18:08:33 | INFO    | classification random controls 25/200
+2026-10-11 18:09:03 | INFO    | classification random controls 50/200
+2026-10-11 18:09:18 | INFO    | classification random controls 75/200
+2026-10-11 18:09:27 | INFO    | classification random controls 100/200
+2026-10-11 18:09:35 | INFO    | classification random controls 125/200
+2026-10-11 18:09:43 | INFO    | classification random controls 150/200
+2026-10-11 18:09:52 | INFO    | classification random controls 175/200
+2026-10-11 18:10:00 | INFO    | classification random controls 200/200
+2026-10-11 18:10:00 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-11 18:10:00 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-11 18:10:00 | INFO    | === STAGE: drug ===
+2026-10-11 18:10:00 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-11 18:10:00 | INFO    | === STAGE: subtypes ===
+2026-10-11 18:10:12 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 18:10:20 | INFO    | saved results/csv/subtype_stability.csv (1 rows)
+2026-10-11 18:10:21 | INFO    | saved results/csv/ferroptosis_subtype_associations.csv (4 rows)
+2026-10-11 18:10:21 | INFO    | saved results/csv/ferroptosis_subtype_patients.csv (1415 rows)
+2026-10-11 18:10:34 | INFO    | subtype random controls 25/200
+2026-10-11 18:10:47 | INFO    | subtype random controls 50/200
+2026-10-11 18:10:54 | INFO    | subtype random controls 75/200
+2026-10-11 18:11:05 | INFO    | subtype random controls 100/200
+2026-10-11 18:11:17 | INFO    | subtype random controls 125/200
+2026-10-11 18:11:28 | INFO    | subtype random controls 150/200
+2026-10-11 18:11:41 | INFO    | subtype random controls 175/200
+2026-10-11 18:11:53 | INFO    | subtype random controls 200/200
+2026-10-11 18:11:53 | INFO    | saved results/csv/subtype_vs_random.csv (4 rows)
+2026-10-11 18:11:53 | INFO    | === STAGE: cellline ===
+2026-10-11 18:12:31 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 18:12:31 | WARNING | cellline: no cell-line expression: GDSC RMA file missing and no DepMap files in data/raw/depmap/ (need an *Expression*.csv and Model.csv; run --check-data)
+2026-10-11 18:12:31 | INFO    | === STAGE: figures ===
+2026-10-11 18:12:33 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-11 18:12:34 | INFO    | figure saved: fig02_missing_data
+2026-10-11 18:13:04 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 18:13:05 | INFO    | figure saved: fig03_expression_distributions
+2026-10-11 18:13:07 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-11 18:13:08 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-11 18:13:08 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-11 18:13:09 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-11 18:13:09 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-11 18:13:09 | INFO    | figure saved: fig09_roc
+2026-10-11 18:13:09 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-11 18:13:10 | INFO    | figure saved: fig11_random_benchmark
+2026-10-11 18:13:10 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-11 18:13:10 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-11 18:13:10 | INFO    | === STAGE: ext_figures ===
+2026-10-11 18:13:10 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-11 18:13:38 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-11 18:13:40 | INFO    | figure saved: fig16_subtype_km
+2026-10-11 18:13:40 | WARNING | figure 'cellline' skipped: cell-line stage not run
+2026-10-11 18:13:40 | INFO    | === STAGE: report ===
+2026-10-11 18:13:40 | INFO    | saved results/csv/analysis_summary.csv (4 rows)
+2026-10-11 18:13:40 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-11 18:13:40 | INFO    | === STAGE: ext_report ===
+2026-10-11 18:13:41 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-12 15:28:28 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-12 15:28:28 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-12 15:28:28 | INFO    | Ferroptosis pipeline v1.4.0 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-12 15:28:28 | INFO    | === STAGE: fetch ===
+2026-10-12 15:28:29 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-12 15:28:31 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-12 15:28:31 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-12 15:28:33 | INFO    | TCGA downloads: 50/458
+2026-10-12 15:28:33 | INFO    | TCGA downloads: 100/458
+2026-10-12 15:28:33 | INFO    | TCGA downloads: 150/458
+2026-10-12 15:28:34 | INFO    | TCGA downloads: 200/458
+2026-10-12 15:28:34 | INFO    | TCGA downloads: 250/458
+2026-10-12 15:28:34 | INFO    | TCGA downloads: 300/458
+2026-10-12 15:28:34 | INFO    | TCGA downloads: 350/458
+2026-10-12 15:28:35 | INFO    | TCGA downloads: 400/458
+2026-10-12 15:28:35 | INFO    | TCGA downloads: 450/458
+2026-10-12 15:28:35 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-12 15:29:27 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-12 15:29:55 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-12 15:29:55 | INFO    | === STAGE: preprocess ===
+2026-10-12 15:31:59 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-12 15:32:27 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-12 15:32:30 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-12 15:33:35 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-12 15:33:40 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-12 15:33:42 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-12 15:34:05 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-12 15:34:16 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-12 15:34:18 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-12 15:34:49 | WARNING | GSE14333: DFS event rate = 22.1% (50/226); a 'cens' flag was inverted -> verify coding with:  python ferro_pipeline.py --inspect-geo GSE14333
+2026-10-12 15:34:50 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-12 15:34:50 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-12 15:34:50 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-12 15:35:23 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/sample_exclusion_audit.csv (166 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-12 15:35:23 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-12 15:35:25 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-12 15:35:25 | INFO    | === STAGE: prognosis ===
+2026-10-12 15:36:00 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 15:36:00 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-12 15:36:00 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-12 15:36:05 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-12 15:36:05 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-12 15:36:05 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-12 15:36:05 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-12 15:36:37 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-12 15:36:52 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-12 15:36:52 | INFO    | saved results/csv/prognosis_patient_scores.csv (1337 rows)
+2026-10-12 15:36:52 | INFO    | === STAGE: benchmark ===
+2026-10-12 15:37:25 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 15:37:25 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-12 15:39:32 | INFO    | random controls: 25/200
+2026-10-12 15:41:37 | INFO    | random controls: 50/200
+2026-10-12 15:43:21 | INFO    | random controls: 75/200
+2026-10-12 15:43:51 | INFO    | random controls: 100/200
+2026-10-12 15:44:22 | INFO    | random controls: 125/200
+2026-10-12 15:44:51 | INFO    | random controls: 150/200
+2026-10-12 15:45:18 | INFO    | random controls: 175/200
+2026-10-12 15:45:46 | INFO    | random controls: 200/200
+2026-10-12 15:45:47 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-12 15:45:47 | INFO    | === STAGE: classification ===
+2026-10-12 15:45:54 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 15:45:54 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-12 15:46:02 | INFO    | classification random controls 25/200
+2026-10-12 15:46:08 | INFO    | classification random controls 50/200
+2026-10-12 15:46:14 | INFO    | classification random controls 75/200
+2026-10-12 15:46:21 | INFO    | classification random controls 100/200
+2026-10-12 15:46:27 | INFO    | classification random controls 125/200
+2026-10-12 15:46:34 | INFO    | classification random controls 150/200
+2026-10-12 15:46:40 | INFO    | classification random controls 175/200
+2026-10-12 15:46:47 | INFO    | classification random controls 200/200
+2026-10-12 15:46:47 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-12 15:46:47 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-12 15:46:47 | INFO    | === STAGE: drug ===
+2026-10-12 15:46:47 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-12 15:46:47 | INFO    | === STAGE: subtypes ===
+2026-10-12 15:46:54 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 15:46:59 | INFO    | saved results/csv/subtype_stability.csv (1 rows)
+2026-10-12 15:47:00 | INFO    | saved results/csv/ferroptosis_subtype_associations.csv (4 rows)
+2026-10-12 15:47:00 | INFO    | saved results/csv/ferroptosis_subtype_patients.csv (1415 rows)
+2026-10-12 15:47:04 | INFO    | subtype random controls 25/200
+2026-10-12 15:47:08 | INFO    | subtype random controls 50/200
+2026-10-12 15:47:13 | INFO    | subtype random controls 75/200
+2026-10-12 15:47:17 | INFO    | subtype random controls 100/200
+2026-10-12 15:47:21 | INFO    | subtype random controls 125/200
+2026-10-12 15:47:25 | INFO    | subtype random controls 150/200
+2026-10-12 15:47:29 | INFO    | subtype random controls 175/200
+2026-10-12 15:47:34 | INFO    | subtype random controls 200/200
+2026-10-12 15:47:34 | INFO    | saved results/csv/subtype_vs_random.csv (4 rows)
+2026-10-12 15:47:34 | INFO    | === STAGE: cellline ===
+2026-10-12 15:47:41 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 15:47:41 | WARNING | cellline: no cell-line expression: GDSC RMA file missing and no DepMap files in data/raw/depmap/ (need an *Expression*.csv and Model.csv; run --check-data)
+2026-10-12 15:47:41 | INFO    | === STAGE: figures ===
+2026-10-12 15:47:43 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-12 15:47:43 | INFO    | figure saved: fig02_missing_data
+2026-10-12 15:47:50 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 15:47:51 | INFO    | figure saved: fig03_expression_distributions
+2026-10-12 15:47:53 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-12 15:47:54 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-12 15:47:55 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-12 15:47:55 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-12 15:47:55 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-12 15:47:55 | INFO    | figure saved: fig09_roc
+2026-10-12 15:47:55 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-12 15:47:56 | INFO    | figure saved: fig11_random_benchmark
+2026-10-12 15:47:56 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-12 15:47:56 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-12 15:47:56 | INFO    | === STAGE: ext_figures ===
+2026-10-12 15:47:56 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-12 15:48:03 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 15:48:03 | INFO    | figure saved: fig16_subtype_km
+2026-10-12 15:48:03 | WARNING | figure 'cellline' skipped: cell-line stage not run
+2026-10-12 15:48:03 | INFO    | === STAGE: report ===
+2026-10-12 15:48:04 | INFO    | saved results/csv/analysis_summary.csv (4 rows)
+2026-10-12 15:48:04 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-12 15:48:04 | INFO    | === STAGE: ext_report ===
+2026-10-12 15:48:04 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-12 16:27:58 | INFO    | Ferroptosis pipeline v1.4.1 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-12 16:27:58 | INFO    | === STAGE: fetch ===
+2026-10-12 16:27:59 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-12 16:28:00 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-12 16:28:00 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-12 16:28:02 | INFO    | TCGA downloads: 50/458
+2026-10-12 16:28:02 | INFO    | TCGA downloads: 100/458
+2026-10-12 16:28:02 | INFO    | TCGA downloads: 150/458
+2026-10-12 16:28:02 | INFO    | TCGA downloads: 200/458
+2026-10-12 16:28:02 | INFO    | TCGA downloads: 250/458
+2026-10-12 16:28:03 | INFO    | TCGA downloads: 300/458
+2026-10-12 16:28:03 | INFO    | TCGA downloads: 350/458
+2026-10-12 16:28:03 | INFO    | TCGA downloads: 400/458
+2026-10-12 16:28:03 | INFO    | TCGA downloads: 450/458
+2026-10-12 16:28:03 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-12 16:28:53 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-12 16:29:11 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-12 16:29:28 | ERROR   | fetch DepMap failed: DepMap file listing unavailable (request failed after 4 tries: GET https://depmap.org/portal/api/download/files: 403 Client Error: Forbidden for url: https://depmap.org/portal/api/dow). Download by hand from https://depmap.org/portal/data_page/ -> files ['Model.csv', 'OmicsExpressionProteinCodingGen
+2026-10-12 16:29:28 | INFO    | === STAGE: cellline ===
+2026-10-12 16:29:51 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 16:29:51 | WARNING | cellline: no cell-line expression: GDSC RMA file missing and no DepMap files in data/raw/depmap/ (need an *Expression*.csv and Model.csv; run --check-data)
+2026-10-12 16:29:51 | INFO    | === STAGE: ext_figures ===
+2026-10-12 16:29:53 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-12 16:30:23 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 16:30:26 | INFO    | figure saved: fig16_subtype_km
+2026-10-12 16:30:26 | WARNING | figure 'cellline' skipped: cell-line stage not run
+2026-10-12 16:30:26 | INFO    | === STAGE: ext_report ===
+2026-10-12 16:30:26 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-12 16:30:26 | INFO    | saved results/csv/analysis_summary.csv (4 rows)
+2026-10-12 16:30:26 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-12 16:32:03 | INFO    | Ferroptosis pipeline v1.4.1 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-12 16:32:03 | INFO    | === STAGE: fetch ===
+2026-10-12 16:32:04 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-12 16:32:06 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-12 16:32:06 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-12 16:32:07 | INFO    | TCGA downloads: 50/458
+2026-10-12 16:32:07 | INFO    | TCGA downloads: 100/458
+2026-10-12 16:32:08 | INFO    | TCGA downloads: 150/458
+2026-10-12 16:32:08 | INFO    | TCGA downloads: 200/458
+2026-10-12 16:32:08 | INFO    | TCGA downloads: 250/458
+2026-10-12 16:32:08 | INFO    | TCGA downloads: 300/458
+2026-10-12 16:32:08 | INFO    | TCGA downloads: 350/458
+2026-10-12 16:32:09 | INFO    | TCGA downloads: 400/458
+2026-10-12 16:32:09 | INFO    | TCGA downloads: 450/458
+2026-10-12 16:32:09 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-12 16:32:58 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-12 16:33:16 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-12 16:33:33 | ERROR   | fetch DepMap failed: DepMap file listing unavailable (request failed after 4 tries: GET https://depmap.org/portal/api/download/files: 403 Client Error: Forbidden for url: https://depmap.org/portal/api/dow). Download by hand from https://depmap.org/portal/data_page/ -> files ['Model.csv', 'OmicsExpressionProteinCodingGen
+2026-10-12 16:33:33 | INFO    | === STAGE: cellline ===
+2026-10-12 16:34:05 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 16:34:05 | WARNING | cellline: no cell-line expression: GDSC RMA file missing and no DepMap files in data/raw/depmap/ (need an *Expression*.csv and Model.csv; run --check-data)
+2026-10-12 16:34:05 | INFO    | === STAGE: ext_figures ===
+2026-10-12 16:34:07 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-12 16:34:33 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 16:34:34 | INFO    | figure saved: fig16_subtype_km
+2026-10-12 16:34:34 | WARNING | figure 'cellline' skipped: cell-line stage not run
+2026-10-12 16:34:34 | INFO    | === STAGE: ext_report ===
+2026-10-12 16:34:34 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-12 16:34:34 | INFO    | saved results/csv/analysis_summary.csv (4 rows)
+2026-10-12 16:34:34 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-12 16:52:36 | INFO    | Ferroptosis pipeline v1.4.1 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-12 16:52:36 | INFO    | === STAGE: cellline ===
+2026-10-12 16:53:26 | INFO    | Ferroptosis pipeline v1.4.1 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-12 16:53:26 | INFO    | === STAGE: cellline ===
+2026-10-12 16:53:59 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 16:55:20 | INFO    | Cell-line classifier: source=crispr expression=DepMap (OmicsExpressionProteinCodingGenesTPMLogp1.csv) drugs=['gpx4crispr'] lines=59 sensitive=29 genes=36
+2026-10-12 16:55:55 | INFO    | cell-line random controls 25/25
+2026-10-12 16:55:55 | INFO    | saved results/csv/cellline_classifier_metrics.csv (1 rows)
+2026-10-12 16:55:55 | INFO    | saved results/csv/cellline_classifier_coefficients.csv (36 rows)
+2026-10-12 16:55:55 | INFO    | saved results/csv/cellline_labels_and_oof.csv (59 rows)
+2026-10-12 16:55:55 | INFO    | saved results/csv/cellline_projection_tumour_stats.csv (4 rows)
+2026-10-12 16:55:55 | INFO    | saved results/csv/cellline_projection_tumour_scores.csv (1415 rows)
+2026-10-12 16:55:56 | INFO    | === STAGE: ext_figures ===
+2026-10-12 16:55:57 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-12 16:56:29 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 16:56:32 | INFO    | figure saved: fig16_subtype_km
+2026-10-12 16:56:33 | INFO    | figure saved: fig17_cellline_classifier_projection
+2026-10-12 16:56:33 | INFO    | === STAGE: ext_report ===
+2026-10-12 16:56:33 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-12 16:56:33 | INFO    | saved results/csv/analysis_summary.csv (5 rows)
+2026-10-12 16:56:33 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-12 17:06:01 | INFO    | Ferroptosis pipeline v1.4.1 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-12 17:06:01 | INFO    | === STAGE: cellline ===
+2026-10-12 17:06:37 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 17:07:54 | INFO    | Cell-line classifier: source=crispr expression=DepMap (OmicsExpressionProteinCodingGenesTPMLogp1.csv) drugs=['gpx4crispr'] lines=59 sensitive=29 genes=36
+2026-10-12 17:09:20 | INFO    | cell-line random controls 25/200
+2026-10-12 17:09:50 | INFO    | cell-line random controls 50/200
+2026-10-12 17:10:15 | INFO    | cell-line random controls 75/200
+2026-10-12 17:10:35 | INFO    | cell-line random controls 100/200
+2026-10-12 17:11:00 | INFO    | cell-line random controls 125/200
+2026-10-12 17:11:25 | INFO    | cell-line random controls 150/200
+2026-10-12 17:11:50 | INFO    | cell-line random controls 175/200
+2026-10-12 17:12:15 | INFO    | cell-line random controls 200/200
+2026-10-12 17:12:15 | INFO    | saved results/csv/cellline_classifier_metrics.csv (1 rows)
+2026-10-12 17:12:15 | INFO    | saved results/csv/cellline_classifier_coefficients.csv (36 rows)
+2026-10-12 17:12:15 | INFO    | saved results/csv/cellline_labels_and_oof.csv (59 rows)
+2026-10-12 17:12:16 | INFO    | saved results/csv/cellline_projection_tumour_stats.csv (4 rows)
+2026-10-12 17:12:16 | INFO    | saved results/csv/cellline_projection_tumour_scores.csv (1415 rows)
+2026-10-12 17:12:16 | INFO    | === STAGE: ext_figures ===
+2026-10-12 17:12:17 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-12 17:12:35 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-12 17:12:37 | INFO    | figure saved: fig16_subtype_km
+2026-10-12 17:12:38 | INFO    | figure saved: fig17_cellline_classifier_projection
+2026-10-12 17:12:38 | INFO    | === STAGE: ext_report ===
+2026-10-12 17:12:38 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-12 17:12:38 | INFO    | saved results/csv/analysis_summary.csv (5 rows)
+2026-10-12 17:12:38 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-13 10:12:20 | INFO    | Ferroptosis pipeline v1.4.1 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-13 10:12:20 | INFO    | === STAGE: subtypes ===
+2026-10-13 10:12:42 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 10:12:53 | INFO    | saved results/csv/subtype_stability.csv (1 rows)
+2026-10-13 10:12:55 | INFO    | saved results/csv/ferroptosis_subtype_associations.csv (4 rows)
+2026-10-13 10:12:55 | INFO    | saved results/csv/ferroptosis_subtype_patients.csv (1415 rows)
+2026-10-13 10:13:09 | INFO    | subtype random controls 25/25
+2026-10-13 10:13:09 | INFO    | saved results/csv/subtype_vs_random.csv (4 rows)
+2026-10-13 10:13:09 | INFO    | === STAGE: cellline ===
+2026-10-13 10:13:38 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 10:14:58 | INFO    | Cell-line classifier: source=crispr expression=DepMap (OmicsExpressionProteinCodingGenesTPMLogp1.csv) drugs=['gpx4crispr'] lines=59 sensitive=29 genes=36
+2026-10-13 10:15:36 | INFO    | cell-line random controls 25/25
+2026-10-13 10:15:36 | INFO    | saved results/csv/cellline_classifier_metrics.csv (1 rows)
+2026-10-13 10:15:36 | INFO    | saved results/csv/cellline_classifier_coefficients.csv (36 rows)
+2026-10-13 10:15:36 | INFO    | saved results/csv/cellline_labels_and_oof.csv (59 rows)
+2026-10-13 10:15:37 | INFO    | saved results/csv/cellline_projection_tumour_stats.csv (4 rows)
+2026-10-13 10:15:37 | INFO    | saved results/csv/cellline_projection_tumour_scores.csv (1415 rows)
+2026-10-13 10:15:37 | INFO    | === STAGE: ext_figures ===
+2026-10-13 10:15:38 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-13 10:16:12 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 10:16:14 | INFO    | figure saved: fig16_subtype_km
+2026-10-13 10:16:16 | INFO    | figure saved: fig17_cellline_classifier_projection
+2026-10-13 10:16:16 | INFO    | === STAGE: ext_report ===
+2026-10-13 10:16:16 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-13 10:16:16 | INFO    | saved results/csv/analysis_summary.csv (5 rows)
+2026-10-13 10:16:16 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-13 10:24:08 | INFO    | Ferroptosis pipeline v1.4.1 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-13 10:24:08 | INFO    | === STAGE: subtypes ===
+2026-10-13 10:24:15 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 10:24:25 | INFO    | saved results/csv/subtype_stability.csv (1 rows)
+2026-10-13 10:24:26 | INFO    | saved results/csv/ferroptosis_subtype_associations.csv (4 rows)
+2026-10-13 10:24:26 | INFO    | saved results/csv/ferroptosis_subtype_patients.csv (1415 rows)
+2026-10-13 10:24:39 | INFO    | subtype random controls 25/200
+2026-10-13 10:24:52 | INFO    | subtype random controls 50/200
+2026-10-13 10:25:05 | INFO    | subtype random controls 75/200
+2026-10-13 10:25:18 | INFO    | subtype random controls 100/200
+2026-10-13 10:25:30 | INFO    | subtype random controls 125/200
+2026-10-13 10:25:44 | INFO    | subtype random controls 150/200
+2026-10-13 10:25:57 | INFO    | subtype random controls 175/200
+2026-10-13 10:26:10 | INFO    | subtype random controls 200/200
+2026-10-13 10:26:10 | INFO    | saved results/csv/subtype_vs_random.csv (4 rows)
+2026-10-13 10:26:10 | INFO    | === STAGE: cellline ===
+2026-10-13 10:26:42 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 10:28:00 | INFO    | Cell-line classifier: source=crispr expression=DepMap (OmicsExpressionProteinCodingGenesTPMLogp1.csv) drugs=['gpx4crispr'] lines=59 sensitive=29 genes=36
+2026-10-13 10:29:45 | INFO    | cell-line random controls 25/200
+2026-10-13 10:30:07 | INFO    | cell-line random controls 50/200
+2026-10-13 10:30:29 | INFO    | cell-line random controls 75/200
+2026-10-13 10:30:51 | INFO    | cell-line random controls 100/200
+2026-10-13 10:31:06 | INFO    | cell-line random controls 125/200
+2026-10-13 10:31:21 | INFO    | cell-line random controls 150/200
+2026-10-13 10:31:43 | INFO    | cell-line random controls 175/200
+2026-10-13 10:32:05 | INFO    | cell-line random controls 200/200
+2026-10-13 10:32:05 | INFO    | saved results/csv/cellline_classifier_metrics.csv (1 rows)
+2026-10-13 10:32:05 | INFO    | saved results/csv/cellline_classifier_coefficients.csv (36 rows)
+2026-10-13 10:32:05 | INFO    | saved results/csv/cellline_labels_and_oof.csv (59 rows)
+2026-10-13 10:32:06 | INFO    | saved results/csv/cellline_projection_tumour_stats.csv (4 rows)
+2026-10-13 10:32:06 | INFO    | saved results/csv/cellline_projection_tumour_scores.csv (1415 rows)
+2026-10-13 10:32:07 | INFO    | === STAGE: ext_figures ===
+2026-10-13 10:32:08 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-13 10:32:41 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 10:32:44 | INFO    | figure saved: fig16_subtype_km
+2026-10-13 10:32:45 | INFO    | figure saved: fig17_cellline_classifier_projection
+2026-10-13 10:32:45 | INFO    | === STAGE: ext_report ===
+2026-10-13 10:32:45 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-13 10:32:45 | INFO    | saved results/csv/analysis_summary.csv (5 rows)
+2026-10-13 10:32:45 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-13 11:15:18 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-13 11:15:18 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-13 11:15:18 | INFO    | Ferroptosis pipeline v1.5.0 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-13 11:15:18 | INFO    | === STAGE: fetch ===
+2026-10-13 11:15:19 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-13 11:15:21 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-13 11:15:21 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-13 11:15:23 | INFO    | TCGA downloads: 50/458
+2026-10-13 11:15:23 | INFO    | TCGA downloads: 100/458
+2026-10-13 11:15:24 | INFO    | TCGA downloads: 150/458
+2026-10-13 11:15:24 | INFO    | TCGA downloads: 200/458
+2026-10-13 11:15:25 | INFO    | TCGA downloads: 250/458
+2026-10-13 11:15:25 | INFO    | TCGA downloads: 300/458
+2026-10-13 11:15:26 | INFO    | TCGA downloads: 350/458
+2026-10-13 11:15:27 | INFO    | TCGA downloads: 400/458
+2026-10-13 11:15:27 | INFO    | TCGA downloads: 450/458
+2026-10-13 11:15:27 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-13 11:16:20 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-13 11:16:48 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-13 11:16:49 | INFO    | === STAGE: preprocess ===
+2026-10-13 11:17:31 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-13 11:17:40 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-13 11:17:41 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-13 11:18:04 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-13 11:18:06 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-13 11:18:07 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-13 11:18:15 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-13 11:18:18 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-13 11:18:19 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-13 11:18:30 | WARNING | GSE14333: DFS event rate = 22.1% (50/226); a 'cens' flag was inverted -> verify coding with:  python ferro_pipeline.py --inspect-geo GSE14333
+2026-10-13 11:18:30 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-13 11:18:30 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-13 11:18:30 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-13 11:18:37 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/sample_exclusion_audit.csv (166 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-13 11:18:37 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-13 11:18:38 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-13 11:18:38 | INFO    | === STAGE: prognosis ===
+2026-10-13 11:18:45 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:18:45 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-13 11:18:45 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-13 11:18:46 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-13 11:18:46 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-13 11:18:46 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-13 11:18:46 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-13 11:18:56 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-13 11:19:01 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-13 11:19:01 | INFO    | saved results/csv/prognosis_patient_scores.csv (1337 rows)
+2026-10-13 11:19:01 | INFO    | === STAGE: benchmark ===
+2026-10-13 11:19:08 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:19:08 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-13 11:19:36 | INFO    | random controls: 25/200
+2026-10-13 11:20:03 | INFO    | random controls: 50/200
+2026-10-13 11:20:31 | INFO    | random controls: 75/200
+2026-10-13 11:21:03 | INFO    | random controls: 100/200
+2026-10-13 11:21:48 | INFO    | random controls: 125/200
+2026-10-13 11:22:32 | INFO    | random controls: 150/200
+2026-10-13 11:23:16 | INFO    | random controls: 175/200
+2026-10-13 11:24:01 | INFO    | random controls: 200/200
+2026-10-13 11:24:03 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-13 11:24:03 | INFO    | === STAGE: classification ===
+2026-10-13 11:27:35 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:27:35 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-13 11:27:49 | INFO    | classification random controls 25/200
+2026-10-13 11:28:00 | INFO    | classification random controls 50/200
+2026-10-13 11:28:12 | INFO    | classification random controls 75/200
+2026-10-13 11:28:23 | INFO    | classification random controls 100/200
+2026-10-13 11:28:33 | INFO    | classification random controls 125/200
+2026-10-13 11:28:43 | INFO    | classification random controls 150/200
+2026-10-13 11:28:53 | INFO    | classification random controls 175/200
+2026-10-13 11:29:04 | INFO    | classification random controls 200/200
+2026-10-13 11:29:04 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-13 11:29:04 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-13 11:29:04 | INFO    | === STAGE: drug ===
+2026-10-13 11:29:04 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-13 11:29:04 | INFO    | === STAGE: subtypes ===
+2026-10-13 11:29:15 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:29:21 | INFO    | saved results/csv/subtype_stability.csv (1 rows)
+2026-10-13 11:29:21 | INFO    | saved results/csv/ferroptosis_subtype_associations.csv (4 rows)
+2026-10-13 11:29:21 | INFO    | saved results/csv/ferroptosis_subtype_patients.csv (1415 rows)
+2026-10-13 11:29:27 | INFO    | subtype random controls 25/200
+2026-10-13 11:29:33 | INFO    | subtype random controls 50/200
+2026-10-13 11:29:38 | INFO    | subtype random controls 75/200
+2026-10-13 11:29:44 | INFO    | subtype random controls 100/200
+2026-10-13 11:29:49 | INFO    | subtype random controls 125/200
+2026-10-13 11:29:55 | INFO    | subtype random controls 150/200
+2026-10-13 11:30:00 | INFO    | subtype random controls 175/200
+2026-10-13 11:30:06 | INFO    | subtype random controls 200/200
+2026-10-13 11:30:06 | INFO    | saved results/csv/subtype_vs_random.csv (4 rows)
+2026-10-13 11:30:06 | INFO    | === STAGE: cellline ===
+2026-10-13 11:30:17 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:30:53 | INFO    | Cell-line classifier: source=crispr expression=DepMap (OmicsExpressionProteinCodingGenesTPMLogp1.csv) drugs=['gpx4crispr'] lines=59 sensitive=29 genes=36
+2026-10-13 11:32:36 | INFO    | cell-line random controls 25/200
+2026-10-13 11:32:47 | INFO    | cell-line random controls 50/200
+2026-10-13 11:32:59 | INFO    | cell-line random controls 75/200
+2026-10-13 11:33:10 | INFO    | cell-line random controls 100/200
+2026-10-13 11:33:22 | INFO    | cell-line random controls 125/200
+2026-10-13 11:33:32 | INFO    | cell-line random controls 150/200
+2026-10-13 11:33:42 | INFO    | cell-line random controls 175/200
+2026-10-13 11:33:51 | INFO    | cell-line random controls 200/200
+2026-10-13 11:33:51 | INFO    | saved results/csv/cellline_classifier_metrics.csv (1 rows)
+2026-10-13 11:33:51 | INFO    | saved results/csv/cellline_classifier_coefficients.csv (36 rows)
+2026-10-13 11:33:51 | INFO    | saved results/csv/cellline_labels_and_oof.csv (59 rows)
+2026-10-13 11:33:52 | INFO    | saved results/csv/cellline_projection_tumour_stats.csv (4 rows)
+2026-10-13 11:33:52 | INFO    | saved results/csv/cellline_projection_tumour_scores.csv (1415 rows)
+2026-10-13 11:33:52 | INFO    | === STAGE: poscontrol ===
+2026-10-13 11:34:04 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:35:17 | INFO    | positive control (cell lines) panel (ferroptosis): AUC=0.760 random median=0.776 emp p=0.637
+2026-10-13 11:35:51 | INFO    | positive control (cell lines) EMT (mesenchymal+epithelial): AUC=0.590 random median=0.755 emp p=0.980
+2026-10-13 11:36:23 | INFO    | positive control (cell lines) proliferation: AUC=0.671 random median=0.722 emp p=0.771
+2026-10-13 11:37:44 | INFO    | saved results/csv/positive_control_cellline.csv (4 rows)
+2026-10-13 11:37:44 | INFO    | saved results/csv/positive_control_tumour.csv (12 rows)
+2026-10-13 11:37:44 | INFO    | === STAGE: dose ===
+2026-10-13 11:37:56 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:38:39 | INFO    | dose gdsc/fluorouracil: n=40 rho=0.126 random median=0.183 emp p=0.647
+2026-10-13 11:38:42 | INFO    | dose gdsc/irinotecan: n=40 rho=-0.031 random median=-0.108 emp p=0.388
+2026-10-13 11:38:45 | INFO    | dose gdsc/oxaliplatin: n=40 rho=0.480 random median=0.201 emp p=0.045
+2026-10-13 11:38:48 | INFO    | dose gdsc/sn38: n=39 rho=-0.171 random median=-0.146 emp p=0.557
+2026-10-13 11:38:51 | INFO    | dose crispr/gpx4crispr: n=59 rho=-0.054 random median=0.334 emp p=0.985
+2026-10-13 11:38:51 | INFO    | saved results/csv/dose_drug_availability.csv (14 rows)
+2026-10-13 11:38:51 | INFO    | saved results/csv/dose_prediction_results.csv (5 rows)
+2026-10-13 11:38:52 | INFO    | saved results/csv/dose_prediction_tumour_scores.csv (7075 rows)
+2026-10-13 11:38:52 | INFO    | === STAGE: figures ===
+2026-10-13 11:38:52 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-13 11:38:53 | INFO    | figure saved: fig02_missing_data
+2026-10-13 11:39:05 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:39:06 | INFO    | figure saved: fig03_expression_distributions
+2026-10-13 11:39:10 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-13 11:39:11 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-13 11:39:12 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-13 11:39:12 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-13 11:39:13 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-13 11:39:13 | INFO    | figure saved: fig09_roc
+2026-10-13 11:39:13 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-13 11:39:14 | INFO    | figure saved: fig11_random_benchmark
+2026-10-13 11:39:14 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-13 11:39:14 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-13 11:39:14 | INFO    | === STAGE: ext_figures ===
+2026-10-13 11:39:14 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-13 11:39:26 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 11:39:28 | INFO    | figure saved: fig16_subtype_km
+2026-10-13 11:39:28 | INFO    | figure saved: fig17_cellline_classifier_projection
+2026-10-13 11:39:28 | INFO    | === STAGE: report ===
+2026-10-13 11:39:28 | INFO    | saved results/csv/analysis_summary.csv (7 rows)
+2026-10-13 11:39:28 | INFO    | reports written to C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports
+2026-10-13 11:39:28 | INFO    | === STAGE: ext_report ===
+2026-10-13 11:39:28 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\extension_report.md
+2026-10-13 11:39:28 | INFO    | === STAGE: scorecard ===
+2026-10-13 11:39:28 | INFO    | wrote C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\results\reports\scorecard.md
+2026-10-13 11:39:29 | INFO    | figure saved: fig18_dose_and_positive_controls
+2026-10-13 17:18:08 | INFO    | --final: cleared cached random_gene_set_benchmark.csv
+2026-10-13 17:18:08 | INFO    | --final: cleared cached random_gene_set_benchmark.meta.json
+2026-10-13 17:18:08 | INFO    | Ferroptosis pipeline v1.5.0 | file=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis\ferro_pipeline.py | root=C:\Users\Mayan\OneDrive\Documents\paper_ferroptosis | seed=42
+2026-10-13 17:18:08 | INFO    | === STAGE: fetch ===
+2026-10-13 17:18:09 | INFO    | GDC status: GDC Data Release 46.0 - August 10, 2026 (api 1)
+2026-10-13 17:18:10 | INFO    | GDC: 524 files, 458 cases, 514 samples, 524 aliquots
+2026-10-13 17:18:10 | INFO    | TCGA primary-tumour files selected: 458 (one per patient)
+2026-10-13 17:18:12 | INFO    | TCGA downloads: 50/458
+2026-10-13 17:18:13 | INFO    | TCGA downloads: 100/458
+2026-10-13 17:18:13 | INFO    | TCGA downloads: 150/458
+2026-10-13 17:18:14 | INFO    | TCGA downloads: 200/458
+2026-10-13 17:18:14 | INFO    | TCGA downloads: 250/458
+2026-10-13 17:18:15 | INFO    | TCGA downloads: 300/458
+2026-10-13 17:18:15 | INFO    | TCGA downloads: 350/458
+2026-10-13 17:18:15 | INFO    | TCGA downloads: 400/458
+2026-10-13 17:18:16 | INFO    | TCGA downloads: 450/458
+2026-10-13 17:18:16 | INFO    | TCGA expression download complete: 0 failed of 458
+2026-10-13 17:19:09 | ERROR   | fetch GDSC failed: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancerrxgene/GDSC_release6.0/Cell_line_RMA_proc_basalExp
+2026-10-13 17:19:38 | ERROR   | fetch CTRP failed: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip
+2026-10-13 17:19:40 | INFO    | === STAGE: preprocess ===
+2026-10-13 17:20:24 | INFO    | TCGA processed: 458 samples, 19938 genes, 434 valid OS
+2026-10-13 17:20:33 | INFO    | GSE39582: expression range [-0.40, 16.11] median 4.77 -> already log-scale (max<=100); no transform
+2026-10-13 17:20:34 | INFO    | GSE39582 clinical mapping: os_time->os.delay (months); os_event->os.event; dfs_time->rfs.delay; dfs_event->rfs.event; age->age.at.diagnosis (year); stage->tnm.stage; mmr->mmr.status
+2026-10-13 17:21:05 | INFO    | GSE39582 processed: 585 samples, 20846 genes, endpoint=OS
+2026-10-13 17:21:08 | INFO    | GSE17536: expression range [3.47, 14.38] median 6.98 -> already log-scale (max<=100); no transform
+2026-10-13 17:21:09 | INFO    | GSE17536 clinical mapping: os_time->overall survival follow-up time; os_event->overall_event (death from any cause); dfs_time->dfs_time; dfs_event->dfs_event (disease free survival; cancer recurrence); age->age; stage->ajcc_stage; mmr->(not found)
+2026-10-13 17:21:18 | INFO    | GSE17536 processed: 177 samples, 20846 genes, endpoint=OS
+2026-10-13 17:21:23 | INFO    | GSE14333: expression range [-4.65, 13.27] median 5.46 -> already log-scale (max<=100); no transform
+2026-10-13 17:21:24 | INFO    | GSE14333 clinical mapping: os_time->(not found); os_event->(not found); dfs_time->dfs_time; dfs_event->dfs_cens; age->age_diag; stage->dukesstage; mmr->(not found)
+2026-10-13 17:21:45 | WARNING | GSE14333: DFS event rate = 22.1% (50/226); a 'cens' flag was inverted -> verify coding with:  python ferro_pipeline.py --inspect-geo GSE14333
+2026-10-13 17:21:45 | INFO    | GSE14333 processed: 290 samples, 20846 genes, endpoint=DFS
+2026-10-13 17:21:45 | ERROR   | preprocess GDSC2 failed: GDSC files not present (see README manual fallback)
+2026-10-13 17:21:45 | ERROR   | preprocess CTRP failed: CTRP zip not present (see README manual fallback)
+2026-10-13 17:22:19 | INFO    | saved results/csv/clinical_data_clean.csv (1510 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/cohort_inclusion_exclusion.csv (15 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/dataset_inventory.csv (4 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/data_dictionary.csv (26 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/sample_exclusion_audit.csv (166 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/ferroptosis_gene_panel.csv (36 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/gene_intersection_report.csv (5 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/tcga_expression_processed.csv (458 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/geo_GSE39582_expression_processed.csv (585 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/geo_GSE17536_expression_processed.csv (177 rows)
+2026-10-13 17:22:19 | INFO    | saved results/csv/geo_GSE14333_expression_processed.csv (290 rows)
+2026-10-13 17:22:21 | INFO    | saved results/csv/train_validation_overlap_checks.csv (7 rows)
+2026-10-13 17:22:21 | INFO    | === STAGE: prognosis ===
+2026-10-13 17:22:56 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:22:56 | INFO    | Eligible features (panel ∩ all loaded cohorts): 36 of 36; excluded: []
+2026-10-13 17:22:56 | INFO    | saved results/csv/tcga_descriptive_stats.csv (1 rows)
+2026-10-13 17:23:01 | INFO    | saved results/csv/univariate_cox_results.csv (36 rows)
+2026-10-13 17:23:01 | INFO    | saved results/csv/selected_features.csv (3 rows)
+2026-10-13 17:23:02 | INFO    | saved results/csv/prognosis_model_coefficients.csv (8 rows)
+2026-10-13 17:23:02 | INFO    | Frozen model: 3 features, penalizer=5.0 from grid [0.05, 0.5, 5.0, 50.0, 500.0] (frozen BEFORE external validation)
+2026-10-13 17:23:47 | INFO    | saved results/csv/tcga_cv_splits.csv (10 rows)
+2026-10-13 17:24:07 | INFO    | saved results/csv/prognosis_validation_metrics.csv (13 rows)
+2026-10-13 17:24:07 | INFO    | saved results/csv/prognosis_patient_scores.csv (1337 rows)
+2026-10-13 17:24:07 | INFO    | === STAGE: benchmark ===
+2026-10-13 17:24:41 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:24:41 | INFO    | Random-control universe: 12060 genes; set size k=36; N=200
+2026-10-13 17:26:55 | INFO    | random controls: 25/200
+2026-10-13 17:29:07 | INFO    | random controls: 50/200
+2026-10-13 17:31:09 | INFO    | random controls: 75/200
+2026-10-13 17:32:58 | INFO    | random controls: 100/200
+2026-10-13 17:34:39 | INFO    | random controls: 125/200
+2026-10-13 17:35:19 | INFO    | random controls: 150/200
+2026-10-13 17:35:46 | INFO    | random controls: 175/200
+2026-10-13 17:36:47 | INFO    | random controls: 200/200
+2026-10-13 17:36:47 | INFO    | saved results/csv/signature_comparison.csv (18 rows)
+2026-10-13 17:36:47 | INFO    | === STAGE: classification ===
+2026-10-13 17:36:54 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:36:54 | INFO    | Classification: primary cohort GSE39582 n=536 dMMR=77 (14.4%)
+2026-10-13 17:37:02 | INFO    | classification random controls 25/200
+2026-10-13 17:37:08 | INFO    | classification random controls 50/200
+2026-10-13 17:37:14 | INFO    | classification random controls 75/200
+2026-10-13 17:37:20 | INFO    | classification random controls 100/200
+2026-10-13 17:37:27 | INFO    | classification random controls 125/200
+2026-10-13 17:37:33 | INFO    | classification random controls 150/200
+2026-10-13 17:37:39 | INFO    | classification random controls 175/200
+2026-10-13 17:37:45 | INFO    | classification random controls 200/200
+2026-10-13 17:37:45 | INFO    | saved results/csv/classification_metrics.csv (3 rows)
+2026-10-13 17:37:45 | INFO    | saved results/csv/classification_predictions.csv (1072 rows)
+2026-10-13 17:37:45 | INFO    | === STAGE: drug ===
+2026-10-13 17:37:45 | WARNING | drug: GDSC2 processed data missing; run fetch+preprocess (or place manual files)
+2026-10-13 17:37:45 | INFO    | === STAGE: subtypes ===
+2026-10-13 17:37:52 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:37:58 | INFO    | saved results/csv/subtype_stability.csv (1 rows)
+2026-10-13 17:37:58 | INFO    | saved results/csv/ferroptosis_subtype_associations.csv (4 rows)
+2026-10-13 17:37:58 | INFO    | saved results/csv/ferroptosis_subtype_patients.csv (1415 rows)
+2026-10-13 17:38:02 | INFO    | subtype random controls 25/200
+2026-10-13 17:38:06 | INFO    | subtype random controls 50/200
+2026-10-13 17:38:10 | INFO    | subtype random controls 75/200
+2026-10-13 17:38:14 | INFO    | subtype random controls 100/200
+2026-10-13 17:38:18 | INFO    | subtype random controls 125/200
+2026-10-13 17:38:22 | INFO    | subtype random controls 150/200
+2026-10-13 17:38:27 | INFO    | subtype random controls 175/200
+2026-10-13 17:38:31 | INFO    | subtype random controls 200/200
+2026-10-13 17:38:31 | INFO    | saved results/csv/subtype_vs_random.csv (4 rows)
+2026-10-13 17:38:31 | INFO    | === STAGE: cellline ===
+2026-10-13 17:38:38 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:39:01 | INFO    | Cell-line classifier: source=crispr expression=DepMap (OmicsExpressionProteinCodingGenesTPMLogp1.csv) drugs=['gpx4crispr'] lines=59 sensitive=29 genes=36
+2026-10-13 17:39:24 | INFO    | cell-line random controls 25/200
+2026-10-13 17:39:29 | INFO    | cell-line random controls 50/200
+2026-10-13 17:39:35 | INFO    | cell-line random controls 75/200
+2026-10-13 17:39:40 | INFO    | cell-line random controls 100/200
+2026-10-13 17:39:45 | INFO    | cell-line random controls 125/200
+2026-10-13 17:39:50 | INFO    | cell-line random controls 150/200
+2026-10-13 17:39:56 | INFO    | cell-line random controls 175/200
+2026-10-13 17:40:01 | INFO    | cell-line random controls 200/200
+2026-10-13 17:40:01 | INFO    | saved results/csv/cellline_classifier_metrics.csv (1 rows)
+2026-10-13 17:40:01 | INFO    | saved results/csv/cellline_classifier_coefficients.csv (36 rows)
+2026-10-13 17:40:01 | INFO    | saved results/csv/cellline_labels_and_oof.csv (59 rows)
+2026-10-13 17:40:01 | INFO    | saved results/csv/cellline_projection_tumour_stats.csv (4 rows)
+2026-10-13 17:40:01 | INFO    | saved results/csv/cellline_projection_tumour_scores.csv (1415 rows)
+2026-10-13 17:40:01 | INFO    | === STAGE: poscontrol ===
+2026-10-13 17:40:08 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:40:49 | INFO    | positive control (cell lines) panel (ferroptosis): AUC=0.760 random median=0.776 emp p=0.637
+2026-10-13 17:41:06 | INFO    | positive control (cell lines) EMT (mesenchymal+epithelial): AUC=0.590 random median=0.755 emp p=0.980
+2026-10-13 17:41:23 | INFO    | positive control (cell lines) proliferation: AUC=0.671 random median=0.722 emp p=0.771
+2026-10-13 17:42:11 | INFO    | saved results/csv/positive_control_cellline.csv (4 rows)
+2026-10-13 17:42:11 | INFO    | saved results/csv/positive_control_tumour.csv (12 rows)
+2026-10-13 17:42:11 | INFO    | === STAGE: dose ===
+2026-10-13 17:42:18 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:42:43 | INFO    | dose gdsc/fluorouracil: n=40 rho=0.126 random median=0.183 emp p=0.647
+2026-10-13 17:42:44 | INFO    | dose gdsc/irinotecan: n=40 rho=-0.031 random median=-0.108 emp p=0.388
+2026-10-13 17:42:46 | INFO    | dose gdsc/oxaliplatin: n=40 rho=0.480 random median=0.201 emp p=0.045
+2026-10-13 17:42:48 | INFO    | dose gdsc/sn38: n=39 rho=-0.171 random median=-0.146 emp p=0.557
+2026-10-13 17:42:50 | INFO    | dose crispr/gpx4crispr: n=59 rho=-0.054 random median=0.334 emp p=0.985
+2026-10-13 17:42:50 | INFO    | saved results/csv/dose_drug_availability.csv (14 rows)
+2026-10-13 17:42:50 | INFO    | saved results/csv/dose_prediction_results.csv (5 rows)
+2026-10-13 17:42:50 | INFO    | saved results/csv/dose_prediction_tumour_scores.csv (7075 rows)
+2026-10-13 17:42:50 | INFO    | === STAGE: figures ===
+2026-10-13 17:42:52 | INFO    | figure saved: fig01_cohort_flowchart
+2026-10-13 17:42:52 | INFO    | figure saved: fig02_missing_data
+2026-10-13 17:42:59 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:42:59 | INFO    | figure saved: fig03_expression_distributions
+2026-10-13 17:43:02 | INFO    | figure saved: fig04_panel_heatmap
+2026-10-13 17:43:03 | INFO    | figure saved: fig05_univariate_cox_forest
+2026-10-13 17:43:03 | INFO    | figure saved: fig06_kaplan_meier
+2026-10-13 17:43:03 | INFO    | figure saved: fig07_prognosis_performance
+2026-10-13 17:43:03 | INFO    | figure saved: fig08_clinical_vs_combined
+2026-10-13 17:43:04 | INFO    | figure saved: fig09_roc
+2026-10-13 17:43:04 | INFO    | figure saved: fig10_confusion_matrix
+2026-10-13 17:43:04 | INFO    | figure saved: fig11_random_benchmark
+2026-10-13 17:43:04 | WARNING | figure 'drug' skipped: no drug correlations
+2026-10-13 17:43:04 | WARNING | figure 'drugmodel' skipped: no drug models
+2026-10-13 17:43:04 | INFO    | === STAGE: ext_figures ===
+2026-10-13 17:43:04 | INFO    | figure saved: fig15_pipeline_overview
+2026-10-13 17:43:11 | INFO    | GSE14333: 95 samples duplicate an earlier GEO cohort and are excluded from analysis (overlap_drop.csv)
+2026-10-13 17:43:12 | INFO    | figure saved: fig16_subtype_km
+2026-10-13 17:43:12 | INFO    | figure saved: fig17_cellline_classifier_projection
+2026-10-13 17:43:12 | INFO    | === STAGE: report ===
+2026-10-13 17:43:12 | INFO    | saved results/csv/analysis_summary.csv (7 rows)

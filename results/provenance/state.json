@@ -1,0 +1,329 @@
+{
+ "summary": {
+  "prognosis_external_validation": {
+   "analysis": "prognosis_external_validation",
+   "status": "completed",
+   "n": 903,
+   "key_result": "GSE39582: C=0.539 [0.499,0.580]; GSE17536: C=0.486 [0.415,0.562]; GSE14333: C=0.581 [0.471,0.701]",
+   "note": "panel=PROVISIONAL (not confirmed by the user)"
+  },
+  "novelty1_specificity_prognosis": {
+   "analysis": "novelty1_specificity_prognosis",
+   "status": "completed",
+   "n": 200,
+   "key_result": "GSE39582: C=0.539, empirical p=0.338; GSE17536: C=0.486, empirical p=0.831; GSE14333: C=0.581, empirical p=0.343",
+   "note": "200 random sets of size 36, seed 42; panel=PROVISIONAL (not confirmed by the user)"
+  },
+  "classification_dMMR": {
+   "analysis": "classification_dMMR",
+   "status": "completed",
+   "n": 536,
+   "key_result": "GSE39582: AUC=0.958 (OOF CV), empirical p vs 200 random sets=0.234",
+   "note": "labels from GEO characteristics; FerroScore coverage {'drivers_present': 16, 'drivers_total': 16, 'suppressors_present': 20, 'suppressors_total': 20, 'missing': ''}; panel=PROVISIONAL (not confirmed by the user)"
+  },
+  "ext_ferroptosis_subtypes": {
+   "analysis": "ext_ferroptosis_subtypes",
+   "status": "completed",
+   "n": 458,
+   "key_result": "TCGA-COAD: HR(high vs low)=0.87, log-rank p=0.643; GSE39582: HR(high vs low)=1.11, log-rank p=0.637; GSE17536: HR(high vs low)=0.52, log-rank p=0.0988; GSE14333: HR(high vs low)=0.45, log-rank p=0.424",
+   "note": "k=2 prespecified; stability ARI=0.55; 200 random sets; panel=PROVISIONAL (not confirmed by the user)"
+  },
+  "ext_cellline_sensitivity_classifier": {
+   "analysis": "ext_cellline_sensitivity_classifier",
+   "status": "completed",
+   "n": 59,
+   "key_result": "crispr/gpx4crispr: OOF AUC=0.760 [0.645,0.887], perm p=0.010, emp p vs 200 random sets=0.612",
+   "note": "projection onto 4 tumour cohorts; panel=PROVISIONAL (not confirmed by the user); in-vitro sensitivity only"
+  },
+  "ext_positive_control": {
+   "analysis": "ext_positive_control",
+   "status": "completed",
+   "n": 200,
+   "key_result": "panel (ferroptosis): AUC=0.760 (emp p vs random=0.637) | EMT (mesenchymal+epithelial): AUC=0.590 (emp p vs random=0.980) | proliferation: AUC=0.671 (emp p vs random=0.771) | ceiling AUC=0.818 | stage HR/SD: TCGA-COAD=2.35, GSE39582=1.72, GSE17536=2.77, GSE14333=2.12",
+   "note": ""
+  },
+  "ext_dose_prediction": {
+   "analysis": "ext_dose_prediction",
+   "status": "completed",
+   "n": 218,
+   "key_result": "5 drug models; 1 beat random sets (emp p<0.05); best gdsc/oxaliplatin: rho=0.48, emp p=0.045",
+   "note": "ridge on 36 panel genes; panel=PROVISIONAL (not confirmed by the user); in-vitro only"
+  }
+ },
+ "deviations": [
+  "TCGA MSI/MMR labels and DFS not retrieved (no standard open-access GDC field); MSI classification uses GEO cohorts with MMR labels.",
+  "GSE14333: no survival endpoint with enough events",
+  "Overlap warning: possible duplicate samples GSE17536 vs GSE14333 (r>0.9 on cohort-z top-variance genes) = 95 -> external cohorts may not be fully independent of each other",
+  "Gene panel is PROVISIONAL (not the original project panel); all ferroptosis findings are provisional.",
+  "GSE14333: OS unavailable -> DFS/RFS used (endpoint differs from TCGA OS training; exploratory)",
+  "95 GEO samples duplicate an earlier cohort and are removed from analysis (data/processed/overlap_drop.csv); re-run prognosis/benchmark/classification after preprocess."
+ ],
+ "stages": {
+  "fetch": {
+   "status": "ok",
+   "seconds": 91.9,
+   "note": ""
+  },
+  "preprocess": {
+   "status": "ok",
+   "seconds": 160.9,
+   "note": ""
+  },
+  "prognosis": {
+   "status": "ok",
+   "seconds": 106.1,
+   "note": ""
+  },
+  "benchmark": {
+   "status": "ok",
+   "seconds": 760.7,
+   "note": ""
+  },
+  "classification": {
+   "status": "ok",
+   "seconds": 57.8,
+   "note": ""
+  },
+  "drug": {
+   "status": "skipped/unavailable",
+   "seconds": 0.0,
+   "note": "GDSC2 processed data missing; run fetch+preprocess (or place manual files)"
+  },
+  "figures": {
+   "status": "ok",
+   "seconds": 14.5,
+   "note": ""
+  },
+  "report": {
+   "status": "ok",
+   "seconds": 0.0,
+   "note": ""
+  },
+  "subtypes": {
+   "status": "ok",
+   "seconds": 45.5,
+   "note": ""
+  },
+  "cellline": {
+   "status": "ok",
+   "seconds": 90.5,
+   "note": ""
+  },
+  "ext_figures": {
+   "status": "ok",
+   "seconds": 8.1,
+   "note": ""
+  },
+  "ext_report": {
+   "status": "ok",
+   "seconds": 0.0,
+   "note": ""
+  },
+  "poscontrol": {
+   "status": "ok",
+   "seconds": 130.2,
+   "note": ""
+  },
+  "dose": {
+   "status": "ok",
+   "seconds": 38.3,
+   "note": ""
+  },
+  "scorecard": {
+   "status": "ok",
+   "seconds": 0.3,
+   "note": ""
+  }
+ },
+ "datasets": {
+  "TCGA-COAD": "available",
+  "GSE39582": "available",
+  "GSE17536": "available",
+  "GSE14333": "available",
+  "GDSC": "UNAVAILABLE: GDSC/RMA_basal_expression download failed. Tried: ['https://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip', 'https://cog.sanger.ac.uk/cancer",
+  "CTRP": "UNAVAILABLE: CTRPv2/ExpandedDataset download failed. Tried: ['https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/CTRPv2.0_2015_ctd2_ExpandedDataset.zip']. Last errors: ['https://ctd2-dat",
+  "DepMap": "available"
+ },
+ "incl": [
+  {
+   "cohort": "TCGA-COAD",
+   "step": "STAR-Counts open-access files returned",
+   "n_before": 524,
+   "n_after": 524,
+   "n_excluded": 0,
+   "reason": "458 cases, 514 samples, 524 aliquots"
+  },
+  {
+   "cohort": "TCGA-COAD",
+   "step": "primary tumour + one sample per patient",
+   "n_before": 524,
+   "n_after": 458,
+   "n_excluded": 66,
+   "reason": "non-primary samples and extra primary samples removed"
+  },
+  {
+   "cohort": "TCGA-COAD",
+   "step": "expression file parsed",
+   "n_before": 458,
+   "n_after": 458,
+   "n_excluded": 0,
+   "reason": "0 files missing locally"
+  },
+  {
+   "cohort": "TCGA-COAD",
+   "step": "clinical record with survival fields",
+   "n_before": 458,
+   "n_after": 455,
+   "n_excluded": 3,
+   "reason": "vital status/time missing"
+  },
+  {
+   "cohort": "TCGA-COAD",
+   "step": "valid OS (time>0, event known)",
+   "n_before": 455,
+   "n_after": 434,
+   "n_excluded": 21,
+   "reason": "non-positive or missing follow-up"
+  },
+  {
+   "cohort": "GSE39582",
+   "step": "samples in series matrix",
+   "n_before": 585,
+   "n_after": 585,
+   "n_excluded": 0,
+   "reason": ""
+  },
+  {
+   "cohort": "GSE39582",
+   "step": "unique samples with expression",
+   "n_before": 585,
+   "n_after": 585,
+   "n_excluded": 0,
+   "reason": "duplicate/all-NaN columns removed"
+  },
+  {
+   "cohort": "GSE39582",
+   "step": "valid survival (OS)",
+   "n_before": 585,
+   "n_after": 573,
+   "n_excluded": 12,
+   "reason": "time<=0 or event unknown"
+  },
+  {
+   "cohort": "GSE17536",
+   "step": "samples in series matrix",
+   "n_before": 177,
+   "n_after": 177,
+   "n_excluded": 0,
+   "reason": ""
+  },
+  {
+   "cohort": "GSE17536",
+   "step": "unique samples with expression",
+   "n_before": 177,
+   "n_after": 177,
+   "n_excluded": 0,
+   "reason": "duplicate/all-NaN columns removed"
+  },
+  {
+   "cohort": "GSE17536",
+   "step": "valid survival (OS)",
+   "n_before": 177,
+   "n_after": 177,
+   "n_excluded": 0,
+   "reason": "time<=0 or event unknown"
+  },
+  {
+   "cohort": "GSE14333",
+   "step": "samples in series matrix",
+   "n_before": 290,
+   "n_after": 290,
+   "n_excluded": 0,
+   "reason": ""
+  },
+  {
+   "cohort": "GSE14333",
+   "step": "unique samples with expression",
+   "n_before": 290,
+   "n_after": 290,
+   "n_excluded": 0,
+   "reason": "duplicate/all-NaN columns removed"
+  },
+  {
+   "cohort": "GSE14333",
+   "step": "valid survival (none)",
+   "n_before": 290,
+   "n_after": 0,
+   "n_excluded": 290,
+   "reason": "time<=0 or event unknown"
+  },
+  {
+   "cohort": "GSE14333",
+   "step": "valid survival (DFS)",
+   "n_before": 290,
+   "n_after": 226,
+   "n_excluded": 64,
+   "reason": "time<=0 or event unknown"
+  }
+ ],
+ "inventory": {
+  "TCGA-COAD": {
+   "dataset": "TCGA-COAD",
+   "data_type": "RNA-seq STAR counts -> log2(TPM+1)",
+   "platform": "Illumina RNA-seq (GDC harmonized)",
+   "n_files": 524,
+   "n_samples": 458,
+   "n_patients": 458,
+   "n_genes": 19938,
+   "pct_missing_expression": 0.0,
+   "endpoint": "OS",
+   "events": 95,
+   "note": "MSI not available; DFS not fetched"
+  },
+  "GSE39582": {
+   "dataset": "GSE39582",
+   "data_type": "microarray",
+   "platform": "GPL570",
+   "n_samples": 585,
+   "n_patients": 585,
+   "n_genes": 20846,
+   "n_probes": 54675,
+   "pct_missing_expression": 0.0,
+   "value_range": "-0.40..16.11",
+   "scale_note": "already log-scale (max<=100); no transform",
+   "endpoint": "OS",
+   "events": 190,
+   "note": ""
+  },
+  "GSE17536": {
+   "dataset": "GSE17536",
+   "data_type": "microarray",
+   "platform": "GPL570",
+   "n_samples": 177,
+   "n_patients": 177,
+   "n_genes": 20846,
+   "n_probes": 54675,
+   "pct_missing_expression": 0.0,
+   "value_range": "3.47..14.38",
+   "scale_note": "already log-scale (max<=100); no transform",
+   "endpoint": "OS",
+   "events": 73,
+   "note": ""
+  },
+  "GSE14333": {
+   "dataset": "GSE14333",
+   "data_type": "microarray",
+   "platform": "GPL570",
+   "n_samples": 290,
+   "n_patients": 290,
+   "n_genes": 20846,
+   "n_probes": 54675,
+   "pct_missing_expression": 0.0,
+   "value_range": "-4.65..13.27",
+   "scale_note": "already log-scale (max<=100); no transform",
+   "endpoint": "DFS",
+   "events": 50,
+   "note": "OS unavailable -> DFS/RFS used (endpoint differs from TCGA OS training; exploratory)"
+  }
+ }
+}
