@@ -1,6 +1,0 @@
-cohort,field,source_key,n_nonmissing,pct_missing,unit_note
-TCGA-COAD,mmr/MSI,(no open-access GDC field retrieved),0,100.0,TCGA MSI not available through this pipeline
-TCGA-COAD,dfs,(not defined),0,100.0,TCGA DFS/PFI requires TCGA-CDR; not fetched
-TCGA-COAD,os_time,demographic.days_to_death / diagnoses.days_to_last_follow_up / follow_ups.days_to_follow_up,455,0.66,days -> months /30.4375
-TCGA-COAD,stage,diagnoses.ajcc_pathologic_stage,371,19.0,I-IV -> 1-4 (sub-stages merged)
-TCGA-COAD,age,diagnoses.age_at_diagnosis (days),456,0.44,years

@@ -1,8 +1,0 @@
-cohort,field,source_key,n_nonmissing,pct_missing,unit_note
-GSE14333,os_time,(not found),0,100.0,
-GSE14333,os_event,(not found),0,100.0,
-GSE14333,dfs_time,dfs_time,226,22.07,assumed months (unit not in field name)
-GSE14333,dfs_event,dfs_cens,226,22.07,censoring flag inverted
-GSE14333,age,age_diag,290,0.0,years assumed
-GSE14333,stage,dukesstage,290,0.0,
-GSE14333,mmr,(not found),0,100.0,
