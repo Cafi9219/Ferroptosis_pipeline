@@ -1,8 +1,0 @@
-check,result
-GSE39582 sample titles containing 'TCGA',0
-GSE17536 sample titles containing 'TCGA',0
-GSE14333 sample titles containing 'TCGA',0
-possible duplicate samples GSE39582 vs GSE17536 (r>0.9 on cohort-z top-variance genes),0
-possible duplicate samples GSE39582 vs GSE14333 (r>0.9 on cohort-z top-variance genes),0
-possible duplicate samples GSE17536 vs GSE14333 (r>0.9 on cohort-z top-variance genes),95
-TCGA patients vs GEO: ID namespaces disjoint (TCGA barcodes vs GSM),no ID overlap by construction

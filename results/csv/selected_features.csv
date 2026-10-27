@@ -1,4 +1,0 @@
-gene,screening_threshold_p,fallback_used,training_cohort,panel_version
-AKR1C1,0.1,False,TCGA-COAD,03d5812616df
-ALOX12,0.1,False,TCGA-COAD,03d5812616df
-HSPB1,0.1,False,TCGA-COAD,03d5812616df

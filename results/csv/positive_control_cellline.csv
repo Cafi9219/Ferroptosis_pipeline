@@ -1,5 +1,0 @@
-target,signature,n_genes,n_lines,auc_oof,auc_lo95,auc_hi95,random_median_auc,empirical_p_vs_random_sets,n_random,single_score_auc_high_means_sensitive
-crispr/gpx4crispr,panel (ferroptosis),36,59,0.7597701149425287,0.6452322796934866,0.8866740823136818,0.7758620689655171,0.6368159203980099,200.0,
-crispr/gpx4crispr,EMT (mesenchymal+epithelial),24,59,0.5896551724137931,0.43802126034884653,0.7451237486095662,0.7551724137931034,0.9800995024875622,200.0,0.36436781609195396
-crispr/gpx4crispr,proliferation,12,59,0.671264367816092,0.5308140417457305,0.7975115740740741,0.7218390804597701,0.7711442786069652,200.0,
-crispr/gpx4crispr,data-driven ceiling (top 36 genes chosen inside CV folds),36,59,0.8183908045977012,,,,,,

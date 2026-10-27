@@ -1,6 +1,0 @@
-cohort,n_genes,n_panel_genes,n_panel_present,panel_missing
-TCGA-COAD,19938,36,36,
-GSE39582,20846,36,36,
-GSE17536,20846,36,36,
-GSE14333,20846,36,36,
-INTERSECTION_ALL_COHORTS,16240,36,36,
